@@ -30,10 +30,10 @@ I'm just a guy who likes to machine learn
  [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=wassname&repo=word_level_diff_writing_assistant&show_owner=true&description_lines_count=3)](https://github.com/wassname/word_level_diff_writing_assistant)
  [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=wassname&repo=side-by-side&show_owner=true&description_lines_count=3)](https://github.com/wassname/side-by-side)
  [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=wassname&repo=rl_2d_walker.js&show_owner=true&description_lines_count=3)](https://github.com/wassname/rl_2d_walker.js)
+ [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=wassname&repo=viz_torch_optim&show_owner=true&description_lines_count=3)](https://github.com/wassname/viz_torch_optim)
  <!-- [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=wassname&repo=sec-web-scraper-13f&show_owner=true&description_lines_count=3)](https://github.com/wassname/sec-web-scraper-13f) -->
  <!-- [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=wassname&repo=keywordshitter2&show_owner=true&description_lines_count=3)](https://github.com/wassname/keywordshitter2) -->
  <!-- [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=wassname&repo=compare_github_repos&show_owner=true&description_lines_count=3)](https://github.com/wassname/compare_github_repos) -->
- [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=wassname&repo=viz_torch_optim&show_owner=true&description_lines_count=3)](https://github.com/wassname/viz_torch_optim)
 
 
 Gists: https://gist.github.com/wassname/public
