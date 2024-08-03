@@ -36,5 +36,10 @@ I'm just a guy who likes to machine learn
  <!-- [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=wassname&repo=keywordshitter2&show_owner=true&description_lines_count=3)](https://github.com/wassname/keywordshitter2) -->
  <!-- [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=wassname&repo=compare_github_repos&show_owner=true&description_lines_count=3)](https://github.com/wassname/compare_github_repos) -->
 
+### Lol
+
+[STOP DOING MATH!](https://gist.github.com/wassname/b2fb9087f2d954261524f9e0d5d50ff8)
+
+### Gists
 
 Gists: https://gist.github.com/wassname/public
