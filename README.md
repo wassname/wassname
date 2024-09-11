@@ -6,6 +6,7 @@ I'm just a guy who likes to machine learn
 
 ### Work on lie detecting for LLMs:
  [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=wassname&repo=open_pref_eval&show_owner=true&description_lines_count=2)](https://github.com/wassname/open_pref_eval)
+ [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=wassname&repo=repr-preference-optimization)](https://github.com/wassname/repr-preference-optimization)
  [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=wassname&repo=lie_elicitation_prompts&show_owner=true&description_lines_count=2)](https://github.com/wassname/lie_elicitation_prompts)
  [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=wassname&repo=prob_jsonformer&show_owner=true&description_lines_count=2)](https://github.com/wassname/prob_jsonformer)
  [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=wassname&repo=awesome-interpretability&show_owner=true&description_lines_count=2)](https://github.com/wassname/awesome-interpretability)
