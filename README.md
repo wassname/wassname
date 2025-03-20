@@ -1,6 +1,4 @@
-I'm just a guy who likes to machine learn
-
-<!-- [![Anurag's GitHub stats-Light](https://github-readme-stats.vercel.app/api?username=wassname&show_icons=true&theme=default#gh-light-mode-only)](https://github.com/anuraghazra/github-readme-stats#gh-light-mode-only) -->
+I'm just a guy who likes to machine learn. I want the good ending not the bad one.
 
 ## Projects:
 
@@ -37,6 +35,7 @@ I'm just a guy who likes to machine learn
  [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=wassname&repo=satellite_leak_detection&show_owner=true&description_lines_count=3)](https://github.com/wassname/satellite_leak_detection)
 
 ### Misc:
+
  [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=wassname&repo=word_level_diff_writing_assistant&show_owner=true&description_lines_count=3)](https://github.com/wassname/word_level_diff_writing_assistant)
  [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=wassname&repo=side-by-side&show_owner=true&description_lines_count=3)](https://github.com/wassname/side-by-side)
  [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=wassname&repo=rl_2d_walker.js&show_owner=true&description_lines_count=3)](https://github.com/wassname/rl_2d_walker.js)
@@ -51,6 +50,7 @@ Elsewhere:
 
 - https://huggingface.co/wassname
 - https://www.lesswrong.com/users/wassname
+- https://gist.github.com/wassname
 - https://wassname.org
 
 ### Lol
