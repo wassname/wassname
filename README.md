@@ -47,9 +47,11 @@ I'm just a guy who likes to machine learn
 
 
 
-Elewhere
+Elsewhere:
+
 - https://huggingface.co/wassname
 - https://www.lesswrong.com/users/wassname
+- https://wassname.org
 
 ### Lol
 
