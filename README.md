@@ -7,12 +7,8 @@ I'm just a guy who likes to machine learn
 ### Work on alignment of LLM's:
 
  [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=wassname&repo=llm_ethics_leaderboard&show_owner=true&description_lines_count=2)](https://github.com/wassname/open_pref_eval)
-  [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=wassname&repo=eliciting_suppressed_knowledge&show_owner=true&description_lines_count=2)](https://github.com/wassname/open_pref_eval)
-
-   [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=wassname&repo=activation_store&show_owner=true&description_lines_count=2)](https://github.com/wassname/open_pref_eval)
-    [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=wassname&repo=machiavelli_as_ds&show_owner=true&description_lines_count=2)](https://github.com/wassname/open_pref_eval)
-     [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=wassname&repo=abliterator&show_owner=true&description_lines_count=2)](https://github.com/wassname/open_pref_eval)
-
+[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=wassname&repo=eliciting_suppressed_knowledge&show_owner=true&description_lines_count=2)](https://github.com/wassname/open_pref_eval)
+[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=wassname&repo=activation_store&show_owner=true&description_lines_count=2)](https://github.com/wassname/open_pref_eval)
  [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=wassname&repo=open_pref_eval&show_owner=true&description_lines_count=2)](https://github.com/wassname/open_pref_eval)
  [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=wassname&repo=repr-preference-optimization)](https://github.com/wassname/repr-preference-optimization)
  [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=wassname&repo=lie_elicitation_prompts&show_owner=true&description_lines_count=2)](https://github.com/wassname/lie_elicitation_prompts)
@@ -22,6 +18,10 @@ I'm just a guy who likes to machine learn
  [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=wassname&repo=adapters_can_monitor_lies&show_owner=true&description_lines_count=2)](https://github.com/wassname/adapters_can_monitor_lies)
  [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=wassname&repo=quiet-star&show_owner=true&description_lines_count=2)](https://github.com/wassname/quiet-star)
  [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=wassname&repo=detect_bs_text&show_owner=true&description_lines_count=2)](https://github.com/wassname/detect_bs_text)
+
+[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=wassname&repo=machiavelli_as_ds&show_owner=true&description_lines_count=2)](https://github.com/wassname/open_pref_eval)
+[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=wassname&repo=abliterator&show_owner=true&description_lines_count=2)](https://github.com/wassname/open_pref_eval)
+     
  <!-- [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=wassname&repo=discovering_latent_knowledge&show_owner=true&description_lines_count=3)](https://github.com/wassname/discovering_latent_knowledge) -->
 
 ### Experiments on World Models:
