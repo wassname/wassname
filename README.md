@@ -10,7 +10,7 @@ I work on AI alignment: steering, evals, and practical interpretability.
 
 ## Current focus
 
-- **[AntiPaSTO](https://github.com/wassname/AntiPaSTO)** *(upcoming)*
+- **[AntiPaSTO](https://github.com/wassname/AntiPaSTO)** **[Preprint](https://github.com/wassname/AntiPaSTO)**
   Self-supervised steering of moral reasoning. Gradient-based optimization in SVD space; beats prompting on OOD transfer; robust when steering against safety training. [Preprint in prep]
 
 ---
