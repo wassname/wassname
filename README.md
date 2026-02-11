@@ -4,14 +4,15 @@ I'm just a guy who likes to machine learn. I want the good ending not the bad on
 
 I work on AI alignment: steering, evals, and practical interpretability.
 
-**Links:** [wassname.org](https://wassname.org) · [Hugging Face](https://huggingface.co/wassname) · [LessWrong](https://www.lesswrong.com/users/wassname) · [Gists](https://gist.github.com/wassname)
+**Links:** [wassname.org](https://wassname.org) · [Scholar](https://scholar.google.com/citations?user=giqv10cAAAAJ) · [Hugging Face](https://huggingface.co/wassname) · [LessWrong](https://www.lesswrong.com/users/wassname) · [Gists](https://gist.github.com/wassname)
 
 ---
+
 
 ## Current focus
 
 - **[AntiPaSTO](https://github.com/wassname/AntiPaSTO)** 
-  Self-supervised steering of moral reasoning. Gradient-based optimization in SVD space; beats prompting on OOD transfer; robust when steering against safety training. **[Preprint](https://github.com/wassname/AntiPaSTO)**
+  Self-supervised steering of moral reasoning. Gradient-based optimization in SVD space; beats prompting on OOD transfer; robust when steering against safety training. **[arXiv:2601.07473](https://arxiv.org/abs/2601.07473)** · [LessWrong](https://www.lesswrong.com/posts/nWiwv4GN8aYqpnZKE/antipasto-self-supervised-value-steering-for-debugging)
 
 ---
 
