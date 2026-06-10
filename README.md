@@ -11,6 +11,8 @@ I work on AI alignment: steering, evals, and practical interpretability.
 
 ## Current focus
 
+- **Weak 2 strong steer** Can weight steering present an interface to let a weaker model align another model's moral character
+
 - **[AntiPaSTO](https://github.com/wassname/AntiPaSTO)** 
   Self-supervised steering of moral reasoning. Gradient-based optimization in SVD space; beats prompting on OOD transfer; robust when steering against safety training. **[arXiv:2601.07473](https://arxiv.org/abs/2601.07473)** · [LessWrong](https://www.lesswrong.com/posts/nWiwv4GN8aYqpnZKE/antipasto-self-supervised-value-steering-for-debugging)
 
