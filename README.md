@@ -30,12 +30,12 @@ I work on AI alignment: steering, evals, and practical interpretability.
 
 | Repo | What it does |
 |------|--------------|
-| [steering-lite](https://github.com/wassname/steering-lite) | Hackable forward-hook activation steering; calibrated and tested. |
-| [lora-lite](https://github.com/wassname/lora-lite) | Hackable single-file-per-variant LoRA built on forward hooks. |
+| [steering-lite](https://github.com/wassname/steering-lite) | Tool: Hackable forward-hook activation steering; calibrated and tested. |
+| [lora-lite](https://github.com/wassname/lora-lite) | Tool: Hackable single-file-per-variant LoRA built on forward hooks. Tested on GSM8K |
 | [steer-heal-love](https://github.com/wassname/steer-heal-love) | Can we make steering coherent over many iterations? Yes, with an RMSE-KL coherence constraint. Follow Gemma-3-4b's journey of discovery with Lex Fridman ;p |
-| [tinymfv](https://github.com/wassname/tinymfv) | Tiny moral foundations vignettes; fast logprob measure of moral preference change. |
-| [isokl_steering_calibration](https://github.com/wassname/isokl_steering_calibration) | Early experiment on how to cheaply calibrate intervention strength for LoRA and steering. <br><img src="https://raw.githubusercontent.com/wassname/isokl_steering_calibration/main/figs/zoom_in.png" width="400" alt="iso-KL calibration plot"> |
-| [ssteer-eval-aware](https://github.com/wassname/ssteer-eval-aware) | Replicated eval-awareness paper with novel S-space (singular value basis) steering; Hawthorne gap 1% vs prior work's 26% on Qwen3-32B. Apart Research Control hackathon 2026. |
+| [tinymfv](https://github.com/wassname/tinymfv) | Tool: Tiny moral foundations vignettes; fast logprob measure of moral preference change. Still is a reliable and sensitive way to test your adapter or steering in ~10mins, I use this a lot and reccomend it. |
+| [isokl_steering_calibration](https://github.com/wassname/isokl_steering_calibration) | Early experiment on how to cheaply calibrate intervention strength for LoRA and steering. This works, but I'm searching for a more elegent method. <br><img src="https://raw.githubusercontent.com/wassname/isokl_steering_calibration/main/figs/zoom_in.png" width="400" alt="iso-KL calibration plot"> |
+| [ssteer-eval-aware](https://github.com/wassname/ssteer-eval-aware) | Replicated eval-awareness paper with novel S-space (singular value basis) steering; Hawthorne gap 1% vs prior work's 26% on Qwen3-32B. Apart Research Control hackathon 2026. <br><img height="200" alt="image" src="https://github.com/user-attachments/assets/851a8083-f873-4615-bcd4-8edb86e195d1" />|
 | [Unsupervised-Elicitation](https://github.com/wassname/Unsupervised-Elicitation) | Replicated Anthropic's ICM paper; model self-reports labeling heuristics on TruthfulQA without supervision. [LW note](https://www.lesswrong.com/posts/EjsceYeeKEMoAohMs/wassname-s-shortform?commentId=g7ZnMh4ccs8xwdxX6) |
 | [coconut](https://github.com/wassname/coconut) | Replicated Facebook's COCONUT + added SEQ-VCR loss. Found training is very slow (not emphasised by authors). WIP branch: [adapter recursion in SVD space](https://github.com/wassname/coconut/tree/adapter_recurse4_simpler). |
 | [How to steer thinking models](https://github.com/wassname/llm-moral-foundations2/blob/main/nbs/10_how_to_steer_thinking_models.ipynb) | RepEng fork that works on reasoning models. [LW note](https://www.lesswrong.com/posts/EjsceYeeKEMoAohMs/wassname-s-shortform?commentId=j8dxxEGz7SsDigQPn) |
