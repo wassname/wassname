@@ -11,8 +11,10 @@ I work on AI alignment: steering, evals, and practical interpretability.
 
 ## Current focus
 
-- **Weak 2 strong steering** Can weight steering provide an interface for a weaker model to align a stronger model's moral character?
-- **vGROUT** Quarantining rewarding hacking: Can we use a hacking vector to route hacky gradients? vGROUT
+- **Weak 2 strong character steering** *(WIP, with Lyptus)*
+  Can weight steering provide an interface for a weaker model to align a stronger model's [moral character](https://www.forethought.org/research/the-importance-of-ai-character)? The weak model interviews the strong one and builds persona pairs; weight steering beats activation steering on my measures. [Early results](https://imgur.com/RdLmNVf).
+- **vGROUT** *(WIP, code not yet public)*
+  Quarantining reward hacking: can we use a hacking vector to route hacky gradients? The vector comes from synthetic hack/honest pairs (GRPO gradient on LoRA weights); hack-aligned gradients route to a quarantine adapter by cosine similarity, the ambiguous middle resolves by absorption. Early result: hacking 60%→0 vs vanilla GRPO, at a modest solve-rate cost. No labels needed, just internal representations, which could scale with model capability.
 
 ---
 
@@ -25,8 +27,11 @@ I work on AI alignment: steering, evals, and practical interpretability.
 
 | Repo | What it does |
 |------|--------------|
+| [steering-lite](https://github.com/wassname/steering-lite) | Hackable forward-hook activation steering; calibrated and tested. |
+| [lora-lite](https://github.com/wassname/lora-lite) | Hackable single-file-per-variant LoRA built on forward hooks. |
+| [steer-heal-love](https://github.com/wassname/steer-heal-love) | Can we make steering coherent over many iterations? Yes, with an RMSE-KL coherence constraint. Follow Gemma-3-4b's journey of discovery with Lex Fridman ;p |
+| [tinymfv](https://github.com/wassname/tinymfv) | Tiny moral foundations vignettes; fast logprob measure of moral preference change. |
 | [ssteer-eval-aware](https://github.com/wassname/ssteer-eval-aware) | Replicated eval-awareness paper with novel S-space (singular value basis) steering; Hawthorne gap 1% vs prior work's 26% on Qwen3-32B. Apart Research Control hackathon 2026. |
-| [steer-heal-love](https://github.com/wassname/steer-heal-love/tree/main) | Can we use adapter to making steering coherent over many iterations? Yes. Follow Gemma-4's journey of discover with Lex Fridman ;p |
 | [Unsupervised-Elicitation](https://github.com/wassname/Unsupervised-Elicitation) | Replicated Anthropic's ICM paper; model self-reports labeling heuristics on TruthfulQA without supervision. [LW note](https://www.lesswrong.com/posts/EjsceYeeKEMoAohMs/wassname-s-shortform?commentId=g7ZnMh4ccs8xwdxX6) |
 | [coconut](https://github.com/wassname/coconut) | Replicated Facebook's COCONUT + added SEQ-VCR loss. Found training is very slow (not emphasised by authors). WIP branch: [adapter recursion in SVD space](https://github.com/wassname/coconut/tree/adapter_recurse4_simpler). |
 | [How to steer thinking models](https://github.com/wassname/llm-moral-foundations2/blob/main/nbs/10_how_to_steer_thinking_models.ipynb) | RepEng fork that works on reasoning models. [LW note](https://www.lesswrong.com/posts/EjsceYeeKEMoAohMs/wassname-s-shortform?commentId=j8dxxEGz7SsDigQPn) |
