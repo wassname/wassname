@@ -12,9 +12,12 @@ I work on AI alignment: steering, evals, and practical interpretability.
 ## Current focus
 
 - **Weak 2 strong character steering** *(WIP, with Lyptus)*
-  Can weight steering provide an interface for a weaker model to align a stronger model's [moral character](https://www.forethought.org/research/the-importance-of-ai-character)? The weak model interviews the strong one and builds persona pairs; weight steering beats activation steering on my measures. [Early results](https://imgur.com/RdLmNVf).
+  Can weight steering provide an interface for a weaker model to align a stronger model's [moral character](https://www.forethought.org/research/the-importance-of-ai-character)? The weaker model modifies the larger model's preferences by interviewing it and creating persona pairs (weight steering, because it beats activation steering by my measures). It can be iterative, can hopefully allow a large gap between weak and strong, and might even scale favourably with model size. It's a work in progress, it's hard to get it working reliably with small models.
+
+  ![weak to strong character steering early results](https://i.imgur.com/RdLmNVf.png)
+
 - **vGROUT** *(WIP, code not yet public)*
-  Quarantining reward hacking: can we use a hacking vector to route hacky gradients? The vector comes from synthetic hack/honest pairs (GRPO gradient on LoRA weights); hack-aligned gradients route to a quarantine adapter by cosine similarity, the ambiguous middle resolves by absorption. Early result: hacking 60%→0 vs vanilla GRPO, at a modest solve-rate cost. No labels needed, just internal representations, which could scale with model capability.
+  Quarantining reward hacking: can we use a hacking vector to route hacky gradients? We build the hacking vector from synthetic hack/honest pairs (the GRPO gradient update for the LoRA weights), then compare each training sample's gradient with it: high cosine similarity gets routed to a quarantine adapter, and the vast majority of in-between gradients get sorted out by absorption. The result: the vectors remove reward hacking much better than vanilla GRPO (60%→0) but reduce solving a bit. This is interesting because it uses synthetic pairs not labels, and relies on internal representations, which could scale well with model capability.
 
 ---
 
