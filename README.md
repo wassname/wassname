@@ -13,13 +13,12 @@ I work on AI alignment: steering, evals, and practical interpretability.
 
 - **Weak 2 strong character steering** *(WIP, with Lyptus)*
   Can weight steering provide an interface for a weaker model to align a stronger model's [moral character](https://www.forethought.org/research/the-importance-of-ai-character)? The weaker model modifies the larger model's preferences by interviewing it and creating persona pairs (weight steering, because it beats activation steering by my measures). It can be iterative, can hopefully allow a large gap between weak and strong, and might even scale favourably with model size. It's a work in progress, it's hard to get it working reliably with small models.
-
-  ![weak to strong character steering early results](https://i.imgur.com/RdLmNVf.png)
+  <img height="400" alt="image" src="https://github.com/user-attachments/assets/be13c990-a57f-49af-9b01-3c993e5296a0" />
 
 - **vGROUT** *(WIP, code not yet public)*
   Quarantining reward hacking: can we use a hacking vector to route hacky gradients? We build the hacking vector from synthetic hack/honest pairs (the GRPO gradient update for the LoRA weights), then compare each training sample's gradient with it: high cosine similarity gets routed to a quarantine adapter, and the vast majority of in-between gradients get sorted out by absorption. Preliminary result (still improving robustness): the vectors remove reward hacking much better than vanilla GRPO but reduce solving a bit. This is interesting because it uses synthetic pairs not labels, and relies on internal representations, which could scale well with model capability.
   
-<img height="200" alt="image" src="https://github.com/user-attachments/assets/4354817d-fe77-4c5a-8c70-4119b8dfef51" />
+  <img height="200" alt="image" src="https://github.com/user-attachments/assets/4354817d-fe77-4c5a-8c70-4119b8dfef51" />
 
 
 Released along the way: [steering-lite](https://github.com/wassname/steering-lite), [lora-lite](https://github.com/wassname/lora-lite), [steer-heal-love](https://github.com/wassname/steer-heal-love), [tinymfv](https://github.com/wassname/tinymfv).
