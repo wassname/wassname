@@ -17,7 +17,7 @@ I work on AI alignment: steering, evals, and practical interpretability.
   ![weak to strong character steering early results](https://i.imgur.com/RdLmNVf.png)
 
 - **vGROUT** *(WIP, code not yet public)*
-  Quarantining reward hacking: can we use a hacking vector to route hacky gradients? We build the hacking vector from synthetic hack/honest pairs (the GRPO gradient update for the LoRA weights), then compare each training sample's gradient with it: high cosine similarity gets routed to a quarantine adapter, and the vast majority of in-between gradients get sorted out by absorption. Preliminary result (I keep finding bugs, so don't hold me to the numbers): the vectors remove reward hacking much better than vanilla GRPO but reduce solving a bit. This is interesting because it uses synthetic pairs not labels, and relies on internal representations, which could scale well with model capability.
+  Quarantining reward hacking: can we use a hacking vector to route hacky gradients? We build the hacking vector from synthetic hack/honest pairs (the GRPO gradient update for the LoRA weights), then compare each training sample's gradient with it: high cosine similarity gets routed to a quarantine adapter, and the vast majority of in-between gradients get sorted out by absorption. Preliminary result (still improving robustness): the vectors remove reward hacking much better than vanilla GRPO but reduce solving a bit. This is interesting because it uses synthetic pairs not labels, and relies on internal representations, which could scale well with model capability.
 
 ---
 
