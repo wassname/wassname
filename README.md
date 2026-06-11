@@ -22,59 +22,56 @@ I work on AI alignment: steering, evals, and practical interpretability.
 <img height="200" alt="image" src="https://github.com/user-attachments/assets/4354817d-fe77-4c5a-8c70-4119b8dfef51" />
 
 
+Tools released along the way: [steering-lite](https://github.com/wassname/steering-lite), [lora-lite](https://github.com/wassname/lora-lite), [steer-heal-love](https://github.com/wassname/steer-heal-love), [tinymfv](https://github.com/wassname/tinymfv).
+
 ---
 
-## Alignment work
-
-- **[AntiPaSTO](https://github.com/wassname/AntiPaSTO)** 
-  Self-supervised steering of moral reasoning. Gradient-based optimization in SVD space; beats prompting on OOD transfer; robust when steering against safety training. **[arXiv:2601.07473](https://arxiv.org/abs/2601.07473)** · [LessWrong](https://www.lesswrong.com/posts/nWiwv4GN8aYqpnZKE/antipasto-self-supervised-value-steering-for-debugging)
-
-### Steering & intervention
+## Tools
 
 | Repo | What it does |
 |------|--------------|
-| [steering-lite](https://github.com/wassname/steering-lite) | Tool: Hackable forward-hook activation steering; calibrated and tested. |
-| [lora-lite](https://github.com/wassname/lora-lite) | Tool: Hackable single-file-per-variant LoRA built on forward hooks. Tested on GSM8K |
+| [steering-lite](https://github.com/wassname/steering-lite) | Hackable forward-hook activation steering; calibrated and tested. |
+| [lora-lite](https://github.com/wassname/lora-lite) | Hackable single-file-per-variant LoRA built on forward hooks. Tested on GSM8K. |
 | [steer-heal-love](https://github.com/wassname/steer-heal-love) | Can we make steering coherent over many iterations? Yes, with an RMSE-KL coherence constraint. Follow Gemma-3-4b's journey of discovery with Lex Fridman ;p |
-| [tinymfv](https://github.com/wassname/tinymfv) | Tool: Tiny moral foundations vignettes; fast logprob measure of moral preference change. Still is a reliable and sensitive way to test your adapter or steering in ~10mins, I use this a lot and reccomend it. |
-| [isokl_steering_calibration](https://github.com/wassname/isokl_steering_calibration) | Early experiment on how to cheaply calibrate intervention strength for LoRA and steering. This works, but I'm searching for a more elegent method. <br><img src="https://raw.githubusercontent.com/wassname/isokl_steering_calibration/main/figs/zoom_in.png" width="400" alt="iso-KL calibration plot"> |
-| [ssteer-eval-aware](https://github.com/wassname/ssteer-eval-aware) | Replicated eval-awareness paper with novel S-space (singular value basis) steering; Hawthorne gap 1% vs prior work's 26% on Qwen3-32B. Apart Research Control hackathon 2026. <br><img height="200" alt="image" src="https://github.com/user-attachments/assets/851a8083-f873-4615-bcd4-8edb86e195d1" />|
-| [Unsupervised-Elicitation](https://github.com/wassname/Unsupervised-Elicitation) | Replicated Anthropic's ICM paper; model self-reports labeling heuristics on TruthfulQA without supervision. [LW note](https://www.lesswrong.com/posts/EjsceYeeKEMoAohMs/wassname-s-shortform?commentId=g7ZnMh4ccs8xwdxX6) |
-| [coconut](https://github.com/wassname/coconut) | Replicated Facebook's COCONUT + added SEQ-VCR loss. Found training is very slow (not emphasised by authors). WIP branch: [adapter recursion in SVD space](https://github.com/wassname/coconut/tree/adapter_recurse4_simpler). |
-| [How to steer thinking models](https://github.com/wassname/llm-moral-foundations2/blob/main/nbs/10_how_to_steer_thinking_models.ipynb) | RepEng fork that works on reasoning models. [LW note](https://www.lesswrong.com/posts/EjsceYeeKEMoAohMs/wassname-s-shortform?commentId=j8dxxEGz7SsDigQPn) |
-| [eliciting_suppressed_knowledge](https://github.com/wassname/eliciting_suppressed_knowledge) | Probes on suppressed activations beat output logprobs on TruthfulQA. Shows linear probes have limits, motivating gradient-based methods. |
+| [tinymfv](https://github.com/wassname/tinymfv) | Tiny moral foundations vignettes; fast logprob measure of moral preference change. Still is a reliable and sensitive way to test your adapter or steering in ~10mins, I use this a lot and recommend it. |
+| [isokl_steering_calibration](https://github.com/wassname/isokl_steering_calibration) | Early experiment on how to cheaply calibrate intervention strength for LoRA and steering. This works, but I'm searching for a more elegant method. <br><img src="https://raw.githubusercontent.com/wassname/isokl_steering_calibration/main/figs/zoom_in.png" width="400" alt="iso-KL calibration plot"> |
+| [activation_store](https://github.com/wassname/activation_store) | Store transformer activations as HF datasets; avoid OOM; reuse for probing. |
+| [ml_debug](https://github.com/wassname/ml_debug) | An attempt to uplift ML research taste in coding agents. Not working yet, but helps a bit; contributions welcome. |
+| [pseudopy](https://github.com/wassname/pseudopy/blob/main/SKILL.md) | A unicode+python type of pseudocode. |
+| [vargdown](https://github.com/wassname/vargdown) | A quick attempt to make deep research more auditable and verifiable: the LLM outputs a structured argument that is easy to check. |
+| [awesome-interpretability](https://github.com/wassname/awesome-interpretability) | Curated mechinterp + probing + tooling map. |
 
-### Evals & datasets
+## Alignment research
+
+- **[AntiPaSTO](https://github.com/wassname/AntiPaSTO)** 
+  Self-supervised steering of moral reasoning. Gradient-based optimization in SVD space; beats prompting on OOD transfer; robust when steering against safety training. **[arXiv:2601.07473](https://arxiv.org/abs/2601.07473)** · [LessWrong](https://www.lesswrong.com/posts/nWiwv4GN8aYqpnZKE/antipasto-self-supervised-value-steering-for-debugging)
+- **[S-space steering for eval-awareness control](https://github.com/wassname/ssteer-eval-aware)**
+  Replicated eval-awareness paper with novel S-space (singular value basis) steering; Hawthorne gap 1% vs prior work's 26% on Qwen3-32B. Apart Research Control hackathon 2026.
+
+  <img height="200" alt="eval-awareness steering results" src="https://github.com/user-attachments/assets/851a8083-f873-4615-bcd4-8edb86e195d1" />
+
+## Evals & datasets
 
 | Repo | What it does |
 |------|--------------|
 | [open_pref_eval](https://github.com/wassname/open_pref_eval) | Judge-free preference eval via logprobs. Converts Machiavelli, ETHICS, GENIES to fast logprob evals. |
 | [llm_ethics_leaderboard](https://github.com/wassname/llm_ethics_leaderboard) | Moral preference leaderboard; logprob rankings + permutation debiasing. [Results site](https://wassname.github.io/llm_morality/) |
-| [activation_store](https://github.com/wassname/activation_store) | Store transformer activations as HF datasets; avoid OOM; reuse for probing. |
 
-### Exploratory / negative results
+More datasets on [Hugging Face](https://huggingface.co/wassname).
 
-These informed later work but didn't yield conclusive positive results.
+## Experiments
 
-| Repo | Status |
-|------|--------|
+Replications, exploratory work, and negative results that informed the work above.
+
+| Repo | What it does |
+|------|--------------|
+| [Unsupervised-Elicitation](https://github.com/wassname/Unsupervised-Elicitation) | Replicated Anthropic's ICM paper; model self-reports labeling heuristics on TruthfulQA without supervision. [LW note](https://www.lesswrong.com/posts/EjsceYeeKEMoAohMs/wassname-s-shortform?commentId=g7ZnMh4ccs8xwdxX6) |
+| [coconut](https://github.com/wassname/coconut) | Replicated Facebook's COCONUT + added SEQ-VCR loss. Found training is very slow (not emphasised by authors). WIP branch: [adapter recursion in SVD space](https://github.com/wassname/coconut/tree/adapter_recurse4_simpler). |
+| [How to steer thinking models](https://github.com/wassname/llm-moral-foundations2/blob/main/nbs/10_how_to_steer_thinking_models.ipynb) | RepEng fork that works on reasoning models. [LW note](https://www.lesswrong.com/posts/EjsceYeeKEMoAohMs/wassname-s-shortform?commentId=j8dxxEGz7SsDigQPn) |
+| [eliciting_suppressed_knowledge](https://github.com/wassname/eliciting_suppressed_knowledge) | Probes on suppressed activations beat output logprobs on TruthfulQA. Shows linear probes have limits, motivating gradient-based methods. |
 | [repr-preference-optimization](https://github.com/wassname/repr-preference-optimization) | Early attempt at hidden-state preference optimization. Superseded by AntiPaSTO. |
 | [LoRA_are_lie_detectors](https://github.com/wassname/LoRA_are_lie_detectors) | Adapters as end-to-end probes. Promising direction, inconclusive results. |
 | [adapters_can_monitor_lies](https://github.com/wassname/adapters_can_monitor_lies) | Adapter-based honesty monitoring (Short Circuit-inspired). Paused. |
-
-### Research tooling
-
-| Repo | What it is |
-|------|------------|
-| [ml_debug](https://github.com/wassname/ml_debug) | An attempt to uplift ML research taste in coding agents. Not working yet, but helps a bit; contributions welcome. |
-| [pseudopy](https://github.com/wassname/pseudopy/blob/main/SKILL.md) | A unicode+python type of pseudocode. |
-| [vargdown](https://github.com/wassname/vargdown) | A quick attempt to make deep research more auditable and verifiable: the LLM outputs a structured argument that is easy to check. |
-
-### Reference
-
-| Repo | What it is |
-|------|------------|
-| [awesome-interpretability](https://github.com/wassname/awesome-interpretability) | Curated mechinterp + probing + tooling map. |
 
 ---
 
