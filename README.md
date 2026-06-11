@@ -34,6 +34,7 @@ I work on AI alignment: steering, evals, and practical interpretability.
 | [lora-lite](https://github.com/wassname/lora-lite) | Hackable single-file-per-variant LoRA built on forward hooks. |
 | [steer-heal-love](https://github.com/wassname/steer-heal-love) | Can we make steering coherent over many iterations? Yes, with an RMSE-KL coherence constraint. Follow Gemma-3-4b's journey of discovery with Lex Fridman ;p |
 | [tinymfv](https://github.com/wassname/tinymfv) | Tiny moral foundations vignettes; fast logprob measure of moral preference change. |
+| [isokl_steering_calibration](https://github.com/wassname/isokl_steering_calibration) | Early experiment on how to cheaply calibrate intervention strength for LoRA and steering. <br><img src="https://raw.githubusercontent.com/wassname/isokl_steering_calibration/main/figs/zoom_in.png" width="400" alt="iso-KL calibration plot"> |
 | [ssteer-eval-aware](https://github.com/wassname/ssteer-eval-aware) | Replicated eval-awareness paper with novel S-space (singular value basis) steering; Hawthorne gap 1% vs prior work's 26% on Qwen3-32B. Apart Research Control hackathon 2026. |
 | [Unsupervised-Elicitation](https://github.com/wassname/Unsupervised-Elicitation) | Replicated Anthropic's ICM paper; model self-reports labeling heuristics on TruthfulQA without supervision. [LW note](https://www.lesswrong.com/posts/EjsceYeeKEMoAohMs/wassname-s-shortform?commentId=g7ZnMh4ccs8xwdxX6) |
 | [coconut](https://github.com/wassname/coconut) | Replicated Facebook's COCONUT + added SEQ-VCR loss. Found training is very slow (not emphasised by authors). WIP branch: [adapter recursion in SVD space](https://github.com/wassname/coconut/tree/adapter_recurse4_simpler). |
@@ -57,6 +58,14 @@ These informed later work but didn't yield conclusive positive results.
 | [repr-preference-optimization](https://github.com/wassname/repr-preference-optimization) | Early attempt at hidden-state preference optimization. Superseded by AntiPaSTO. |
 | [LoRA_are_lie_detectors](https://github.com/wassname/LoRA_are_lie_detectors) | Adapters as end-to-end probes. Promising direction, inconclusive results. |
 | [adapters_can_monitor_lies](https://github.com/wassname/adapters_can_monitor_lies) | Adapter-based honesty monitoring (Short Circuit-inspired). Paused. |
+
+### Research tooling
+
+| Repo | What it is |
+|------|------------|
+| [ml_debug](https://github.com/wassname/ml_debug) | An attempt to uplift ML research taste in coding agents. Not working yet, but helps a bit; contributions welcome. |
+| [pseudopy](https://github.com/wassname/pseudopy/blob/main/SKILL.md) | A unicode+python type of pseudocode. |
+| [vargdown](https://github.com/wassname/vargdown) | A quick attempt to make deep research more auditable and verifiable: the LLM outputs a structured argument that is easy to check. |
 
 ### Reference
 
