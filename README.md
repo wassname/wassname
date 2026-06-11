@@ -22,24 +22,27 @@ I work on AI alignment: steering, evals, and practical interpretability.
 <img height="200" alt="image" src="https://github.com/user-attachments/assets/4354817d-fe77-4c5a-8c70-4119b8dfef51" />
 
 
-Tools released along the way: [steering-lite](https://github.com/wassname/steering-lite), [lora-lite](https://github.com/wassname/lora-lite), [steer-heal-love](https://github.com/wassname/steer-heal-love), [tinymfv](https://github.com/wassname/tinymfv).
+Released along the way: [steering-lite](https://github.com/wassname/steering-lite), [lora-lite](https://github.com/wassname/lora-lite), [steer-heal-love](https://github.com/wassname/steer-heal-love), [tinymfv](https://github.com/wassname/tinymfv).
 
 ---
 
 ## Tools
 
+Ones I use and recommend:
+
 | Repo | What it does |
 |------|--------------|
 | [steering-lite](https://github.com/wassname/steering-lite) | Hackable forward-hook activation steering; calibrated and tested. |
 | [lora-lite](https://github.com/wassname/lora-lite) | Hackable single-file-per-variant LoRA built on forward hooks. Tested on GSM8K. |
-| [steer-heal-love](https://github.com/wassname/steer-heal-love) | Can we make steering coherent over many iterations? Yes, with an RMSE-KL coherence constraint. Follow Gemma-3-4b's journey of discovery with Lex Fridman ;p |
 | [tinymfv](https://github.com/wassname/tinymfv) | Tiny moral foundations vignettes; fast logprob measure of moral preference change. Still is a reliable and sensitive way to test your adapter or steering in ~10mins, I use this a lot and recommend it. |
-| [isokl_steering_calibration](https://github.com/wassname/isokl_steering_calibration) | Early experiment on how to cheaply calibrate intervention strength for LoRA and steering. This works, but I'm searching for a more elegant method. <br><img src="https://raw.githubusercontent.com/wassname/isokl_steering_calibration/main/figs/zoom_in.png" width="400" alt="iso-KL calibration plot"> |
-| [activation_store](https://github.com/wassname/activation_store) | Store transformer activations as HF datasets; avoid OOM; reuse for probing. |
-| [ml_debug](https://github.com/wassname/ml_debug) | An attempt to uplift ML research taste in coding agents. Not working yet, but helps a bit; contributions welcome. |
-| [pseudopy](https://github.com/wassname/pseudopy/blob/main/SKILL.md) | A unicode+python type of pseudocode. |
-| [vargdown](https://github.com/wassname/vargdown) | A quick attempt to make deep research more auditable and verifiable: the LLM outputs a structured argument that is easy to check. |
 | [awesome-interpretability](https://github.com/wassname/awesome-interpretability) | Curated mechinterp + probing + tooling map. |
+
+Early drafts, contributions welcome:
+
+| Repo | What it does |
+|------|--------------|
+| [ml_debug](https://github.com/wassname/ml_debug) | An attempt to uplift ML research taste in coding agents. Not working yet, but helps a bit. |
+| [pseudopy](https://github.com/wassname/pseudopy/blob/main/SKILL.md) | A unicode+python type of pseudocode. |
 
 ## Alignment research
 
@@ -65,6 +68,8 @@ Replications, exploratory work, and negative results that informed the work abov
 
 | Repo | What it does |
 |------|--------------|
+| [steer-heal-love](https://github.com/wassname/steer-heal-love) | Can we make steering coherent over many iterations? Yes, with an RMSE-KL coherence constraint. Follow Gemma-3-4b's journey of discovery with Lex Fridman ;p |
+| [isokl_steering_calibration](https://github.com/wassname/isokl_steering_calibration) | Experiment towards cheaply calibrating intervention strength for LoRA and steering; works, but I'm searching for a more elegant method. <br><img src="https://raw.githubusercontent.com/wassname/isokl_steering_calibration/main/figs/zoom_in.png" width="400" alt="iso-KL calibration plot"> |
 | [Unsupervised-Elicitation](https://github.com/wassname/Unsupervised-Elicitation) | Replicated Anthropic's ICM paper; model self-reports labeling heuristics on TruthfulQA without supervision. [LW note](https://www.lesswrong.com/posts/EjsceYeeKEMoAohMs/wassname-s-shortform?commentId=g7ZnMh4ccs8xwdxX6) |
 | [coconut](https://github.com/wassname/coconut) | Replicated Facebook's COCONUT + added SEQ-VCR loss. Found training is very slow (not emphasised by authors). WIP branch: [adapter recursion in SVD space](https://github.com/wassname/coconut/tree/adapter_recurse4_simpler). |
 | [How to steer thinking models](https://github.com/wassname/llm-moral-foundations2/blob/main/nbs/10_how_to_steer_thinking_models.ipynb) | RepEng fork that works on reasoning models. [LW note](https://www.lesswrong.com/posts/EjsceYeeKEMoAohMs/wassname-s-shortform?commentId=j8dxxEGz7SsDigQPn) |
