@@ -11,7 +11,7 @@ I work on AI alignment: steering, evals, and practical interpretability.
 
 ## Current focus
 
-Scalable, self-supervised alignment interventions. Ideally internal interventions, and driven by gradient.
+Scalable, self-supervised alignment interventions. Ideally internal interventions, and driven by gradient. I'm always keen to discuss and brainstorm along these lines.
 
 - **Weak 2 strong character steering** *(WIP, with Lyptus)*
   Can weight steering provide an interface for a weaker model to align a stronger model's [moral character](https://www.forethought.org/research/the-importance-of-ai-character)? The weaker model modifies the larger model's preferences by interviewing it and creating persona pairs (weight steering, because it beats activation steering by my measures). It can be iterative, can hopefully allow a large gap between weak and strong, and might even scale favourably with model size. It's a work in progress, it's hard to get it working reliably with small models.
