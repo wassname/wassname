@@ -14,11 +14,11 @@ I work on AI alignment: steering, evals, and practical interpretability.
 Scalable, self-supervised alignment interventions. Ideally internal interventions, and driven by gradient. I'm always keen to discuss and brainstorm along these lines.
 
 - **Weak 2 strong character steering** *(WIP, with Lyptus)*
-  Can weight steering provide an interface for a weaker model to align a stronger model's [moral character](https://www.forethought.org/research/the-importance-of-ai-character)? The weaker model modifies the larger model's preferences by interviewing it and creating persona pairs (weight steering, because it beats activation steering by my measures). It can be iterative, can hopefully allow a large gap between weak and strong, and might even scale favourably with model size. Early draft is public now: a 9B teacher steering a 27B student toward "defer less to authority, care more", with no human labels. [Draft](https://wassname.github.io/w2schar-mini/) · [code](https://github.com/wassname/w2schar-mini/)
+   <img height="140" alt="weak to strong character steering" src="https://github.com/wassname/w2schar-mini/raw/main/assets/w2schar_labeled.png" />
 
-  ![weak to strong character steering](https://github.com/wassname/w2schar-mini/raw/main/assets/w2schar_labeled.png)
-
-  ![weak to strong character steering early results](https://i.imgur.com/RdLmNVf.png)
+  Can weight steering provide an interface for a weaker model to align a stronger model's [moral character](https://www.forethought.org/research/the-importance-of-ai-character)? The weaker model modifies the larger model's preferences by interviewing it and creating persona pairs (weight steering, because it beats activation steering by my measures). It can be iterative, can hopefully allow a large gap between weak and strong, and might even scale favourably with model size. Early draft is public now: a 9B teacher steering a 27B student toward "defer less to authority, care more", with no human labels. [Draft](https://wassname.github.io/w2schar-mini/) · [code](https://github.com/wassname/w2schar-mini/)  
+  
+   <img height="500" alt="weak to strong character steering" src="https://i.imgur.com/RdLmNVf.png" />
 
 - **vGROUT** *(partial negative, code public)*
   Quarantining reward hacking: can we use a hacking vector to route hacky gradients? Somewhat. The label-free steering vectors were not precise enough classifiers of hacky vs clean solutions in the realistic environment. The useful clue was initialization: signed-CorDA partially suppressed hacking by absorbing gradients into the hack-initialized quarantine adapter, dropping held-out hack from 0.759 to 0.218 in one 4B run. This is not a deployable operating point, but it is useful evidence because it uses synthetic pairs not labels, and strong labels may not be available for unknown reward hacks during frontier training. [LW](https://www.lesswrong.com/posts/kzri5W2uBfF2mdboK/can-we-use-steering-vectors-to-suppress-reward-hacking-1) · [code](https://github.com/wassname/vGROUT_pub)
