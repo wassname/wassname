@@ -14,13 +14,14 @@ I work on AI alignment: steering, evals, and practical interpretability.
 Scalable, self-supervised alignment interventions. Ideally internal interventions, and driven by gradient. I'm always keen to discuss and brainstorm along these lines.
 
 - **Weak 2 strong character steering** *(WIP, with Lyptus)*
-  Can weight steering provide an interface for a weaker model to align a stronger model's [moral character](https://www.forethought.org/research/the-importance-of-ai-character)? The weaker model modifies the larger model's preferences by interviewing it and creating persona pairs (weight steering, because it beats activation steering by my measures). It can be iterative, can hopefully allow a large gap between weak and strong, and might even scale favourably with model size. It's a work in progress, it's hard to get it working reliably with small models.
-  <img height="400" alt="image" src="https://github.com/user-attachments/assets/be13c990-a57f-49af-9b01-3c993e5296a0" />
+  Can weight steering provide an interface for a weaker model to align a stronger model's [moral character](https://www.forethought.org/research/the-importance-of-ai-character)? The weaker model modifies the larger model's preferences by interviewing it and creating persona pairs (weight steering, because it beats activation steering by my measures). It can be iterative, can hopefully allow a large gap between weak and strong, and might even scale favourably with model size. Early draft is public now: a 9B teacher steering a 27B student toward "defer less to authority, care more", with no human labels. [Draft](https://wassname.github.io/w2schar-mini/) · [code](https://github.com/wassname/w2schar-mini/)
 
-- **vGROUT** *(WIP, code not yet public)*
-  Quarantining reward hacking: can we use a hacking vector to route hacky gradients? We build the hacking vector from synthetic hack/honest pairs (the GRPO gradient update for the LoRA weights), then compare each training sample's gradient with it: high cosine similarity gets routed to a quarantine adapter, and the vast majority of in-between gradients get sorted out by absorption. Preliminary result (still improving robustness): the vectors remove reward hacking much better than vanilla GRPO but reduce solving a bit. This is interesting because it uses synthetic pairs not labels, and relies on internal representations, which could scale well with model capability.
-  
-  <img height="200" alt="image" src="https://github.com/user-attachments/assets/4354817d-fe77-4c5a-8c70-4119b8dfef51" />
+  ![weak to strong character steering](https://github.com/wassname/w2schar-mini/raw/main/assets/w2schar_labeled.png)
+
+  ![weak to strong character steering early results](https://i.imgur.com/RdLmNVf.png)
+
+- **vGROUT** *(partial negative, code public)*
+  Quarantining reward hacking: can we use a hacking vector to route hacky gradients? Somewhat. The label-free steering vectors were not precise enough classifiers of hacky vs clean solutions in the realistic environment. The useful clue was initialization: signed-CorDA partially suppressed hacking by absorbing gradients into the hack-initialized quarantine adapter, dropping held-out hack from 0.759 to 0.218 in one 4B run. This is not a deployable operating point, but it is useful evidence because it uses synthetic pairs not labels, and strong labels may not be available for unknown reward hacks during frontier training. [LW](https://www.lesswrong.com/posts/kzri5W2uBfF2mdboK/can-we-use-steering-vectors-to-suppress-reward-hacking-1) · [code](https://github.com/wassname/vGROUT_pub)
 
 
 Released along the way: [steering-lite](https://github.com/wassname/steering-lite), [lora-lite](https://github.com/wassname/lora-lite), [steer-heal-love](https://github.com/wassname/steer-heal-love), [tinymfv](https://github.com/wassname/tinymfv).
@@ -35,6 +36,8 @@ Ones I use and recommend:
 |------|--------------|
 | [steering-lite](https://github.com/wassname/steering-lite) | Hackable forward-hook activation steering; calibrated and tested. |
 | [lora-lite](https://github.com/wassname/lora-lite) | Hackable single-file-per-variant LoRA built on forward hooks. Tested on GSM8K. |
+| [cwsteer](https://github.com/wassname/cwsteer) | Contrastive weight steering: generate pairs, filter them, train one signed adapter, calibrate steering strength, bake for inference. |
+| [persona-steering-template-library](https://github.com/wassname/persona-steering-template-library) | Persona/template validation for steering pairs; checks on-axis movement without obvious refusal, length, style, or assistant-tone confounds. |
 | [tinymfv](https://github.com/wassname/tinymfv) | Tiny moral foundations vignettes; fast logprob measure of moral preference change. Still is a reliable and sensitive way to test your adapter or steering in ~10mins, I use this a lot and recommend it. |
 | [awesome-interpretability](https://github.com/wassname/awesome-interpretability) | Curated mechinterp + probing + tooling map. |
 | [adapters_as_hypotheses](https://github.com/wassname/adapters_as_hypotheses) | Lit review: each LoRA-type adapter tells us something about how to look at transformer internals, some with causal evidence. |
