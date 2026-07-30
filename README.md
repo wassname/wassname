@@ -17,13 +17,13 @@ Scalable, self-supervised alignment interventions. Ideally internal intervention
 
   Working on turning Anthropic's [Jacobian lens](https://transformer-circuits.pub/2026/workspace/index.html) work into contrastive steering. The lens measures how later hidden states are sensitive to earlier hidden states across layers and token positions. I replace its full Jacobian with one [vector-Jacobian product](https://wangkuiyi.github.io/jacobian.html) for the words associated with a contrastive steering vector, such as good versus evil. That cuts vector extraction on Qwen3.5-4B to about 90 seconds.
 
-  Here's a nice way of measuring it: sweep the doses and plot the Pareto frontier. The Jacobian (`vjp_delta`) method has a much better profile than mean difference and random on this development set.
+  Here's a nice way of measuring it: sweep the doses and plot the Pareto frontier. The Jacobian (`vjp_delta`) method has a much better profile than mean difference and random on 20 questions from [Bullshit Benchmark v2](https://github.com/petergpt/bullshit-benchmark).
 
-  <img height="420" alt="Development-set Jacobian steering compared with mean-difference baseline and random control" src="assets/jacobian_steering_pareto.png" />
+  <img height="420" alt="Jacobian steering on 20 Bullshit Benchmark v2 questions, compared with mean-difference baseline and random control" src="assets/jacobian_steering_pareto.png" />
 
   In case it's not clear, good steering methods are high and horizontal, since they can steer left and right without much off-axis damage. Bad steering methods fall as side effects accumulate, then the line disappears when the model becomes incoherent.
 
-  These 20 questions were picked to favour `vjp_delta` over mean difference, so the plot is a teaser rather than evidence of a general advantage. A fresh evaluation has to decide whether it survives. [thread](https://x.com/wassname/status/2082634053619208334) · [Jacobian-lens code](https://github.com/anthropics/jacobian-lens) · [Bullshit Benchmark](https://github.com/petergpt/bullshit-benchmark) · my code coming soon
+  These 20 questions were picked to favour `vjp_delta` over mean difference, so the plot is a teaser rather than evidence of a general advantage. A fresh evaluation has to decide whether it survives. [thread](https://x.com/wassname/status/2082634053619208334) · [Jacobian-lens code](https://github.com/anthropics/jacobian-lens) · my code coming soon
 
 - **Weak 2 strong character steering** *(WIP, with Lyptus)*
    <img height="140" alt="weak to strong character steering" src="https://github.com/wassname/w2schar-mini/raw/main/assets/w2schar_labeled.png" />
