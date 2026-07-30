@@ -19,19 +19,9 @@ Scalable, self-supervised alignment interventions. Ideally internal intervention
 
   Anthropic fits the full averaged Jacobian over 1,000 WikiText sequences. I only need the part associated with one steering concept, so I replace the full matrix with a [vector-Jacobian product](https://wangkuiyi.github.io/jacobian.html): make ordinary contrastive persona pairs, such as good versus evil, measure their difference late, then backpropagate that one direction to earlier layers and tokens. On Qwen3.5-4B the vector takes about 90 seconds to extract; a complete steering arm takes about 12 minutes.
 
-  <img height="420" alt="Development-set Pareto sweep for bidirectional Jacobian steering" src="assets/jacobian_steering_pareto.png" />
+  <img height="420" alt="Development-set Jacobian steering compared with mean-difference baseline and random control" src="assets/jacobian_steering_pareto.png" />
 
   The initial development-set sweep looks promising at low model-change doses. These 20 questions were selected to favour `vjp_delta` over mean difference, though, so the plot is a teaser rather than evidence of a general advantage. A fresh evaluation has to decide whether it survives. [Jacobian-lens code](https://github.com/anthropics/jacobian-lens) · my code coming soon
-
-- **Can a judge tell a stated reason from a concealed motive?** *(WIP, dataset public)*
-
-  Following the overlooked [Deep Value Benchmark](https://arxiv.org/abs/2511.02109), whose authors report that models generalise shallow style better than deep values, I made 1,680 accounts of assigned [MACHIAVELLI](https://arxiv.org/abs/2304.03279) actions. Action harm and assigned motive are crossed, so the easy action cue points the wrong way. The check works: a judge told only to choose the lower-harm action scores 0.992 when the cues agree and 0.008 when they are crossed.
-
-  With no rubric, the assigned motives become somewhat harder to classify as the explanation model gets stronger: -0.003 accuracy per Artificial Analysis point, with 88.7% posterior probability that the slope is negative. This says the judge found the accounts harder, not why. None of the nine tested rubrics clearly improved on no rubric; the traditional virtue lists landed below chance and pushed the judge back toward action harm. Next question: does a virtue constitution beat a rules constitution in constitutional training?
-
-  <img height="390" alt="No-rubric assigned-motive accuracy by explanation-model capability" src="https://raw.githubusercontent.com/wassname/machiavelli_deep_value/main/results/no_rubric_motive_by_agent.svg" />
-
-  [dataset](https://huggingface.co/datasets/wassname/machiavelli_deep_value) · [code](https://github.com/wassname/machiavelli_deep_value)
 
 - **Weak 2 strong character steering** *(WIP, with Lyptus)*
    <img height="140" alt="weak to strong character steering" src="https://github.com/wassname/w2schar-mini/raw/main/assets/w2schar_labeled.png" />
@@ -42,6 +32,16 @@ Scalable, self-supervised alignment interventions. Ideally internal intervention
 
 - **vGROUT** *(partial negative, code public)*
   Quarantining reward hacking: can we use a hacking vector to route hacky gradients? Somewhat. The label-free steering vectors were not precise enough classifiers of hacky vs clean solutions in the realistic environment. The useful clue was initialization: signed-CorDA partially suppressed hacking by absorbing gradients into the hack-initialized quarantine adapter, dropping held-out hack from 0.759 to 0.218 in one 4B run. This is not a deployable operating point, but it is useful evidence because it uses synthetic pairs not labels, and strong labels may not be available for unknown reward hacks during frontier training. [LW](https://www.lesswrong.com/posts/kzri5W2uBfF2mdboK/can-we-use-steering-vectors-to-suppress-reward-hacking-1) · [code](https://github.com/wassname/vGROUT_pub)
+
+- **Can a judge tell a stated reason from a concealed motive?** *(WIP, dataset public)*
+
+  Following the overlooked [Deep Value Benchmark](https://arxiv.org/abs/2511.02109), whose authors report that models generalise shallow style better than deep values, I made 1,680 accounts of assigned [MACHIAVELLI](https://arxiv.org/abs/2304.03279) actions. Action harm and assigned motive are crossed, so the easy action cue points the wrong way. The check works: a judge told only to choose the lower-harm action scores 0.992 when the cues agree and 0.008 when they are crossed.
+
+  With no rubric, assigned motives become somewhat harder to classify across five Qwen models: -0.003 accuracy per Artificial Analysis point, with 88.7% posterior probability that the slope is negative. This says the judge found the accounts harder, not why. None of the nine tested rubrics clearly improved on no rubric; the traditional virtue lists landed below chance and pushed the judge back toward action harm. Next question: does a virtue constitution beat a rules constitution in constitutional training?
+
+  <img height="390" alt="No-rubric assigned-motive accuracy across five Qwen explanation models" src="https://raw.githubusercontent.com/wassname/machiavelli_deep_value/main/results/no_rubric_motive_by_agent.svg" />
+
+  [dataset](https://huggingface.co/datasets/wassname/machiavelli_deep_value) · [code](https://github.com/wassname/machiavelli_deep_value)
 
 
 Released along the way: [steering-lite](https://github.com/wassname/steering-lite), [lora-lite](https://github.com/wassname/lora-lite), [steer-heal-love](https://github.com/wassname/steer-heal-love), [tinymfv](https://github.com/wassname/tinymfv).
