@@ -23,7 +23,7 @@ Scalable, self-supervised alignment interventions. Ideally internal intervention
 
   In case it's not clear, good steering methods are high and horizontal, since they can steer left and right without much off-axis damage. Bad steering methods fall as side effects accumulate, then the line disappears when the model becomes incoherent.
 
-  These are out-of-sample questions: the steering vectors were extracted from contrastive persona pairs, not Bullshit Benchmark. I picked the 20 displayed questions after the sweep to favour `vjp_delta` over mean difference, though, so the plot is a teaser rather than an unbiased estimate of the gap. [thread](https://x.com/wassname/status/2082634053619208334) · [Jacobian-lens code](https://github.com/anthropics/jacobian-lens) · my code coming soon
+  [thread](https://x.com/wassname/status/2082634053619208334) · [Jacobian-lens code](https://github.com/anthropics/jacobian-lens) · my code coming soon
 
 - **Weak 2 strong character steering** *(WIP, with Lyptus)*
    <img height="140" alt="weak to strong character steering" src="https://github.com/wassname/w2schar-mini/raw/main/assets/w2schar_labeled.png" />
@@ -64,7 +64,7 @@ Ones I use and recommend:
 | [awesome-interpretability](https://github.com/wassname/awesome-interpretability) | Curated mechinterp + probing + tooling map. |
 | [adapters_as_hypotheses](https://github.com/wassname/adapters_as_hypotheses) | Lit review: each LoRA-type adapter tells us something about how to look at transformer internals, some with causal evidence. |
 
-Agent skills I use:
+Agent skills I made that are worth sharing:
 
 | Repo | What it does |
 |------|--------------|
