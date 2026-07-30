@@ -15,13 +15,15 @@ Scalable, self-supervised alignment interventions. Ideally internal intervention
 
 - **Jacobian-lens steering** *(WIP, coming soon)*
 
-  Better steering using a simplified [Jacobian lens](https://transformer-circuits.pub/2026/workspace/index.html). I measure how sensitive later hidden states are to earlier hidden states, across layers and token positions, then run that sensitivity backwards to find a steering direction. For example, how a state halfway through a prompt and halfway through the model drives the last quarter of the answer. Because the lens decodes the residual stream through the unembedding before sampling, it can also expose weak or [suppressed](https://github.com/wassname/eliciting_suppressed_knowledge) vocabulary directions that never appear in the output.
+  Working on turning Anthropic's [Jacobian lens](https://transformer-circuits.pub/2026/workspace/index.html) work into contrastive steering. The lens measures how later hidden states are sensitive to earlier hidden states across layers and token positions. I replace its full Jacobian with one [vector-Jacobian product](https://wangkuiyi.github.io/jacobian.html) for the words associated with a contrastive steering vector, such as good versus evil. That cuts vector extraction on Qwen3.5-4B to about 90 seconds.
 
-  Anthropic fits the full averaged Jacobian over 1,000 WikiText sequences. I only need the part associated with one steering concept, so I replace the full matrix with a [vector-Jacobian product](https://wangkuiyi.github.io/jacobian.html): make ordinary contrastive persona pairs, such as good versus evil, measure their difference late, then backpropagate that one direction to earlier layers and tokens. On Qwen3.5-4B the vector takes about 90 seconds to extract; a complete steering arm takes about 12 minutes.
+  Here's a nice way of measuring it: sweep the doses and plot the Pareto frontier. The Jacobian (`vjp_delta`) method has a much better profile than mean difference and random on this development set.
 
   <img height="420" alt="Development-set Jacobian steering compared with mean-difference baseline and random control" src="assets/jacobian_steering_pareto.png" />
 
-  The initial development-set sweep looks promising at low model-change doses. These 20 questions were selected to favour `vjp_delta` over mean difference, though, so the plot is a teaser rather than evidence of a general advantage. A fresh evaluation has to decide whether it survives. [Jacobian-lens code](https://github.com/anthropics/jacobian-lens) · my code coming soon
+  In case it's not clear, good steering methods are high and horizontal, since they can steer left and right without much off-axis damage. Bad steering methods fall as side effects accumulate, then the line disappears when the model becomes incoherent.
+
+  These 20 questions were picked to favour `vjp_delta` over mean difference, so the plot is a teaser rather than evidence of a general advantage. A fresh evaluation has to decide whether it survives. [thread](https://x.com/wassname/status/2082634053619208334) · [Jacobian-lens code](https://github.com/anthropics/jacobian-lens) · [Bullshit Benchmark](https://github.com/petergpt/bullshit-benchmark) · my code coming soon
 
 - **Weak 2 strong character steering** *(WIP, with Lyptus)*
    <img height="140" alt="weak to strong character steering" src="https://github.com/wassname/w2schar-mini/raw/main/assets/w2schar_labeled.png" />
@@ -37,9 +39,9 @@ Scalable, self-supervised alignment interventions. Ideally internal intervention
 
   Following the overlooked [Deep Value Benchmark](https://arxiv.org/abs/2511.02109), whose authors report that models generalise shallow style better than deep values, I made 1,680 accounts of assigned [MACHIAVELLI](https://arxiv.org/abs/2304.03279) actions. Action harm and assigned motive are crossed, so the easy action cue points the wrong way. The check works: a judge told only to choose the lower-harm action scores 0.992 when the cues agree and 0.008 when they are crossed.
 
-  With no rubric, assigned motives become somewhat harder to classify across five Qwen models: -0.003 accuracy per Artificial Analysis point, with 88.7% posterior probability that the slope is negative. This says the judge found the accounts harder, not why. None of the nine tested rubrics clearly improved on no rubric; the traditional virtue lists landed below chance and pushed the judge back toward action harm. Next question: does a virtue constitution beat a rules constitution in constitutional training?
+  With no rubric, assigned-motive accuracy falls from 0.600 to 0.471 across four open Qwen 3.5 models as their Artificial Analysis score rises from 21 to 34. This says the judge found the accounts harder, not why. None of the nine tested rubrics clearly improved on no rubric; the traditional virtue lists landed below chance and pushed the judge back toward action harm. Next question: does a virtue constitution beat a rules constitution in constitutional training?
 
-  <img height="390" alt="No-rubric assigned-motive accuracy across five Qwen explanation models" src="https://raw.githubusercontent.com/wassname/machiavelli_deep_value/main/results/no_rubric_motive_by_agent.svg" />
+  <img height="390" alt="No-rubric assigned-motive accuracy across four open Qwen 3.5 explanation models" src="https://raw.githubusercontent.com/wassname/machiavelli_deep_value/main/results/no_rubric_motive_by_agent.svg" />
 
   [dataset](https://huggingface.co/datasets/wassname/machiavelli_deep_value) · [code](https://github.com/wassname/machiavelli_deep_value)
 
