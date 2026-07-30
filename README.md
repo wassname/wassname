@@ -13,6 +13,26 @@ I work on AI alignment: steering, evals, and practical interpretability.
 
 Scalable, self-supervised alignment interventions. Ideally internal interventions, and driven by gradient. I'm always keen to discuss and brainstorm along these lines.
 
+- **Jacobian-lens steering** *(WIP, coming soon)*
+
+  Better steering using a simplified [Jacobian lens](https://transformer-circuits.pub/2026/workspace/index.html). I measure how sensitive later hidden states are to earlier hidden states, across layers and token positions, then run that sensitivity backwards to find a steering direction. For example, how a state halfway through a prompt and halfway through the model drives the last quarter of the answer. Because the lens decodes the residual stream through the unembedding before sampling, it can also expose weak or [suppressed](https://github.com/wassname/eliciting_suppressed_knowledge) vocabulary directions that never appear in the output.
+
+  Anthropic fits the full averaged Jacobian over 1,000 WikiText sequences. I only need the part associated with one steering concept, so I replace the full matrix with a [vector-Jacobian product](https://wangkuiyi.github.io/jacobian.html): make ordinary contrastive persona pairs, such as good versus evil, measure their difference late, then backpropagate that one direction to earlier layers and tokens. On Qwen3.5-4B the vector takes about 90 seconds to extract; a complete steering arm takes about 12 minutes.
+
+  <img height="420" alt="Development-set Pareto sweep for bidirectional Jacobian steering" src="assets/jacobian_steering_pareto.png" />
+
+  The initial development-set sweep looks promising at low model-change doses. These 20 questions were selected to favour `vjp_delta` over mean difference, though, so the plot is a teaser rather than evidence of a general advantage. A fresh evaluation has to decide whether it survives. [Jacobian-lens code](https://github.com/anthropics/jacobian-lens) · my code coming soon
+
+- **Can a judge tell a stated reason from a concealed motive?** *(WIP, dataset public)*
+
+  Following the overlooked [Deep Value Benchmark](https://arxiv.org/abs/2511.02109), whose authors report that models generalise shallow style better than deep values, I made 1,680 accounts of assigned [MACHIAVELLI](https://arxiv.org/abs/2304.03279) actions. Action harm and assigned motive are crossed, so the easy action cue points the wrong way. The check works: a judge told only to choose the lower-harm action scores 0.992 when the cues agree and 0.008 when they are crossed.
+
+  With no rubric, the assigned motives become somewhat harder to classify as the explanation model gets stronger: -0.003 accuracy per Artificial Analysis point, with 88.7% posterior probability that the slope is negative. This says the judge found the accounts harder, not why. None of the nine tested rubrics clearly improved on no rubric; the traditional virtue lists landed below chance and pushed the judge back toward action harm. Next question: does a virtue constitution beat a rules constitution in constitutional training?
+
+  <img height="390" alt="No-rubric assigned-motive accuracy by explanation-model capability" src="https://raw.githubusercontent.com/wassname/machiavelli_deep_value/main/results/no_rubric_motive_by_agent.svg" />
+
+  [dataset](https://huggingface.co/datasets/wassname/machiavelli_deep_value) · [code](https://github.com/wassname/machiavelli_deep_value)
+
 - **Weak 2 strong character steering** *(WIP, with Lyptus)*
    <img height="140" alt="weak to strong character steering" src="https://github.com/wassname/w2schar-mini/raw/main/assets/w2schar_labeled.png" />
 
@@ -42,12 +62,12 @@ Ones I use and recommend:
 | [awesome-interpretability](https://github.com/wassname/awesome-interpretability) | Curated mechinterp + probing + tooling map. |
 | [adapters_as_hypotheses](https://github.com/wassname/adapters_as_hypotheses) | Lit review: each LoRA-type adapter tells us something about how to look at transformer internals, some with causal evidence. |
 
-Early drafts, contributions welcome:
+Agent skills I use:
 
 | Repo | What it does |
 |------|--------------|
-| [ml_debug](https://github.com/wassname/ml_debug) | An attempt to uplift ML research taste in coding agents. Not working yet, but helps a bit. |
-| [pseudopy](https://github.com/wassname/pseudopy/blob/main/SKILL.md) | A unicode+python type of pseudocode. |
+| [ml-debug](https://github.com/wassname/ml-debug) | Practical folklore for debugging training runs: stuck metrics, gradients, and sweep reliability. An attempt to give coding agents research taste. |
+| [pseudopy](https://github.com/wassname/pseudopy) | Compact Unicode-maths pseudocode, written close enough to Python to remain executable. |
 
 ## Alignment research
 
