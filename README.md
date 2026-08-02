@@ -37,22 +37,11 @@ Scalable, self-supervised alignment interventions. Ideally internal intervention
   In some ways, culturally and on a few aspects of personality and humour, they look like moral aliens. But that assumes they are telling the truth. Moral Maps is also an eval for steering: it shows how far steering can move models across these surveys, especially when steering for honesty and credulity. What if we steer them for honesty and ask again? Are they really psychological and cultural aliens, or are they mimicking us?
 
 - **Weak 2 strong character steering** *(WIP, with Lyptus)*
-   <img height="140" alt="weak to strong character steering" src="https://github.com/wassname/w2schar-mini/raw/main/assets/w2schar_labeled.png" />
+   <img height="140" alt="weak to strong character steering" src="https://raw.githubusercontent.com/wassname/w2schar-mini/main/writeup/assets/w2schar_labeled.png" />
 
   Can weight steering provide an interface for a weaker model to align a stronger model's [moral character](https://www.forethought.org/research/the-importance-of-ai-character)? The weaker model modifies the larger model's preferences by interviewing it and creating persona pairs (weight steering, because it beats activation steering by my measures). It can be iterative, can hopefully allow a large gap between weak and strong, and might even scale favourably with model size. Early draft is public now: a 9B teacher steering a 27B student toward "defer less to authority, care more", with no human labels. [Draft](https://wassname.github.io/w2schar-mini/) · [code](https://github.com/wassname/w2schar-mini/)  
   
    <img height="300" alt="weak to strong character steering" src="https://i.imgur.com/RdLmNVf.png" />
-
-- **Can a judge tell a stated reason from a concealed motive?** *(WIP, dataset public)*
-
-  Following the overlooked [Deep Value Benchmark](https://arxiv.org/abs/2511.02109), whose authors report that models generalise shallow style better than deep values, I made 1,680 accounts of assigned [MACHIAVELLI](https://arxiv.org/abs/2304.03279) actions. Action harm and assigned motive are crossed, so the easy action cue points the wrong way. The check works: a judge told only to choose the lower-harm action scores 0.992 when the cues agree and 0.008 when they are crossed.
-
-  With no rubric, assigned-motive accuracy falls from 0.600 to 0.471 across four open Qwen 3.5 models as their Artificial Analysis score rises from 21 to 34. This says the judge found the accounts harder, not why. None of the nine tested rubrics clearly improved on no rubric; the traditional virtue lists landed below chance and pushed the judge back toward action harm. Next question: does a virtue constitution beat a rules constitution in constitutional training?
-
-  <img height="260" alt="No-rubric assigned-motive accuracy across four open Qwen 3.5 explanation models" src="https://raw.githubusercontent.com/wassname/machiavelli_deep_value/main/results/no_rubric_motive_by_agent.svg" />
-
-  [dataset](https://huggingface.co/datasets/wassname/machiavelli_deep_value) · [code](https://github.com/wassname/machiavelli_deep_value)
-
 
 Released along the way: [steering-lite](https://github.com/wassname/steering-lite), [lora-lite](https://github.com/wassname/lora-lite), [steer-heal-love](https://github.com/wassname/steer-heal-love).
 
