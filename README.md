@@ -2,7 +2,7 @@
 
 Principal Data Scientist @ Woodside · pragmatic alignment research. I want the good ending not the bad one.
 
-I work on AI alignment: steering, evals, and practical interpretability.
+I work on AI alignment: steering, evals, and practical interpretability. Trying to build tools that ask AI hard questions and catch when they're lying. Long-term aim: unsupervised methods that make AI more moral than the humans who train it.
 
 **Links:** [wassname.org](https://wassname.org) · [Scholar](https://scholar.google.com/citations?user=giqv10cAAAAJ) · [Hugging Face](https://huggingface.co/wassname) · [LessWrong](https://www.lesswrong.com/users/wassname) · [Gists](https://gist.github.com/wassname)
 
@@ -19,17 +19,20 @@ Scalable, self-supervised alignment interventions. Ideally internal intervention
 
   Here's a nice way of measuring it: sweep the doses and plot the Pareto frontier. The Jacobian (`vjp_delta`) method has a much better profile than mean difference and random on 20 questions from [Bullshit Benchmark v2](https://github.com/petergpt/bullshit-benchmark).
 
-  <img height="420" alt="Jacobian steering on 20 Bullshit Benchmark v2 questions, compared with mean-difference baseline and random control" src="assets/jacobian_steering_pareto.png" />
+  <img height="260" alt="Jacobian steering on 20 Bullshit Benchmark v2 questions, compared with mean-difference baseline and random control" src="assets/jacobian_steering_pareto.png" />
 
   In case it's not clear, good steering methods are high and horizontal, since they can steer left and right without much off-axis damage. Bad steering methods fall as side effects accumulate, then the line disappears when the model becomes incoherent.
 
   [thread](https://x.com/wassname/status/2082634053619208334) · [Jacobian-lens code](https://github.com/anthropics/jacobian-lens) · my code coming soon
 
+- **vGROUT** *(partial negative, code public)*
+  Quarantining reward hacking: can we use a hacking vector to route hacky gradients? Somewhat. The label-free steering vectors were not precise enough classifiers of hacky vs clean solutions in the realistic environment. The useful clue was initialization: signed-CorDA partially suppressed hacking by absorbing gradients into the hack-initialized quarantine adapter, dropping held-out hack from 0.529 to 0.195 (~63%) in one 4B run. This is not a deployable operating point, but it is useful evidence because it uses synthetic pairs not labels, and strong labels may not be available for unknown reward hacks during frontier training. [LW](https://www.lesswrong.com/posts/kzri5W2uBfF2mdboK/can-we-use-steering-vectors-to-suppress-reward-hacking-1) · [code](https://github.com/wassname/vGROUT_pub)
+
 - **[Moral Maps](https://github.com/wassname/moral-maps): where do models sit among humans?**
 
   Where do models fall in terms of human culture, personality, and humour? I apply human surveys to LLMs and compare them with maps of human answers. It turns out the models are somewhere west of Silicon Valley, and as they are trained on more STEM data they seem to be voyaging farther west.
 
-  <img height="540" alt="Seventeen frontier models on the Inglehart-Welzel World Values Survey culture map" src="https://raw.githubusercontent.com/wassname/moral-maps/main/docs/img/wvs/wvs_map_iw.png" />
+  <img height="300" alt="Seventeen frontier models on the Inglehart-Welzel World Values Survey culture map" src="https://raw.githubusercontent.com/wassname/moral-maps/main/docs/img/wvs/wvs_map_iw.png" />
 
   In some ways, culturally and on a few aspects of personality and humour, they look like moral aliens. But that assumes they are telling the truth. Moral Maps is also an eval for steering: it shows how far steering can move models across these surveys, especially when steering for honesty and credulity. What if we steer them for honesty and ask again? Are they really psychological and cultural aliens, or are they mimicking us?
 
@@ -38,10 +41,7 @@ Scalable, self-supervised alignment interventions. Ideally internal intervention
 
   Can weight steering provide an interface for a weaker model to align a stronger model's [moral character](https://www.forethought.org/research/the-importance-of-ai-character)? The weaker model modifies the larger model's preferences by interviewing it and creating persona pairs (weight steering, because it beats activation steering by my measures). It can be iterative, can hopefully allow a large gap between weak and strong, and might even scale favourably with model size. Early draft is public now: a 9B teacher steering a 27B student toward "defer less to authority, care more", with no human labels. [Draft](https://wassname.github.io/w2schar-mini/) · [code](https://github.com/wassname/w2schar-mini/)  
   
-   <img height="500" alt="weak to strong character steering" src="https://i.imgur.com/RdLmNVf.png" />
-
-- **vGROUT** *(partial negative, code public)*
-  Quarantining reward hacking: can we use a hacking vector to route hacky gradients? Somewhat. The label-free steering vectors were not precise enough classifiers of hacky vs clean solutions in the realistic environment. The useful clue was initialization: signed-CorDA partially suppressed hacking by absorbing gradients into the hack-initialized quarantine adapter, dropping held-out hack from 0.759 to 0.218 in one 4B run. This is not a deployable operating point, but it is useful evidence because it uses synthetic pairs not labels, and strong labels may not be available for unknown reward hacks during frontier training. [LW](https://www.lesswrong.com/posts/kzri5W2uBfF2mdboK/can-we-use-steering-vectors-to-suppress-reward-hacking-1) · [code](https://github.com/wassname/vGROUT_pub)
+   <img height="300" alt="weak to strong character steering" src="https://i.imgur.com/RdLmNVf.png" />
 
 - **Can a judge tell a stated reason from a concealed motive?** *(WIP, dataset public)*
 
@@ -49,7 +49,7 @@ Scalable, self-supervised alignment interventions. Ideally internal intervention
 
   With no rubric, assigned-motive accuracy falls from 0.600 to 0.471 across four open Qwen 3.5 models as their Artificial Analysis score rises from 21 to 34. This says the judge found the accounts harder, not why. None of the nine tested rubrics clearly improved on no rubric; the traditional virtue lists landed below chance and pushed the judge back toward action harm. Next question: does a virtue constitution beat a rules constitution in constitutional training?
 
-  <img height="390" alt="No-rubric assigned-motive accuracy across four open Qwen 3.5 explanation models" src="https://raw.githubusercontent.com/wassname/machiavelli_deep_value/main/results/no_rubric_motive_by_agent.svg" />
+  <img height="260" alt="No-rubric assigned-motive accuracy across four open Qwen 3.5 explanation models" src="https://raw.githubusercontent.com/wassname/machiavelli_deep_value/main/results/no_rubric_motive_by_agent.svg" />
 
   [dataset](https://huggingface.co/datasets/wassname/machiavelli_deep_value) · [code](https://github.com/wassname/machiavelli_deep_value)
 
