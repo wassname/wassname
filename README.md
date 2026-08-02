@@ -1,6 +1,6 @@
 # wassname
 
-I'm just a guy who likes to machine learn. I want the good ending not the bad one.
+Principal Data Scientist @ Woodside · pragmatic alignment research. I want the good ending not the bad one.
 
 I work on AI alignment: steering, evals, and practical interpretability.
 
