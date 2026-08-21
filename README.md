@@ -13,13 +13,15 @@ I work on AI alignment: steering, evals, and practical interpretability. Trying 
 
 Scalable, self-supervised alignment interventions. Ideally internal interventions, and driven by gradient. I'm always keen to discuss and brainstorm along these lines.
 
+I laid this agenda out in a 5 minute talk at the Sydney AI Safety Forum 2026: [Technical Advantages for Weak-to-Strong Oversight: Bets I'd Like Challenged](https://www.youtube.com/watch?v=e1PG9x08dKc).
+
 - **Jacobian-lens steering** *(WIP, coming soon)*
 
   Working on turning Anthropic's [Jacobian lens](https://transformer-circuits.pub/2026/workspace/index.html) work into contrastive steering. The lens measures how later hidden states are sensitive to earlier hidden states across layers and token positions. I replace its full Jacobian with one [vector-Jacobian product](https://wangkuiyi.github.io/jacobian.html) for the words associated with a contrastive steering vector, such as good versus evil. That cuts vector extraction on Qwen3.5-4B to about 90 seconds.
 
   Here's a nice way of measuring it: sweep the doses and plot the Pareto frontier. The Jacobian (`vjp_delta`) method has a much better profile than mean difference and random on 20 questions from [Bullshit Benchmark v2](https://github.com/petergpt/bullshit-benchmark).
 
-  <img height="260" alt="Jacobian steering on 20 Bullshit Benchmark v2 questions, compared with mean-difference baseline and random control" src="assets/jacobian_steering_pareto.png" />
+  <img height="260" alt="Tradeoff plot for Jacobian-lens steering: contrastive vectors from one vector-Jacobian product on Qwen3.5-4B, judged on 20 Bullshit Benchmark v2 questions. Horizontal axis: on-axis steering in judge points, abrasive (negative) to sycophantic (positive). Vertical axis: off-axis damage from 0 to about 0.9, lower is better. Good methods run high and flat; bad ones sink, then vanish as the model loses coherence. vjp_delta (ours) spans about minus 2.4 to plus 3.9 judge points at about 0.3 to 0.4 damage. mean_diff (baseline) reaches about minus 2.5 at 0.9 damage and plus 1.2 at 0.4. random (control) barely steers at low damage, with one degenerate branch near plus 3 at 0.9 damage. Only vjp_delta steers far both ways while staying near the top." src="assets/jacobian_steering_pareto.png" />
 
   In case it's not clear, good steering methods are high and horizontal, since they can steer left and right without much off-axis damage. Bad steering methods fall as side effects accumulate, then the line disappears when the model becomes incoherent.
 
@@ -32,16 +34,16 @@ Scalable, self-supervised alignment interventions. Ideally internal intervention
 
   Where do models fall in terms of human culture, personality, and humour? I apply human surveys to LLMs and compare them with maps of human answers. It turns out the models are somewhere west of Silicon Valley, and as they are trained on more STEM data they seem to be voyaging farther west.
 
-  <img height="300" alt="Seventeen frontier models on the Inglehart-Welzel World Values Survey culture map" src="https://raw.githubusercontent.com/wassname/moral-maps/main/docs/img/wvs/wvs_map_iw.png" />
+  <img height="300" alt="17 frontier models placed among about 90 human societies on the Inglehart-Welzel World Values Survey map, scored by rated sampling; every model sits in the secular self-expression corner, near or past Sweden and Iceland" src="https://raw.githubusercontent.com/wassname/moral-maps/main/docs/img/wvs/wvs_map_iw.png" />
 
   In some ways, culturally and on a few aspects of personality and humour, they look like moral aliens. But that assumes they are telling the truth. Moral Maps is also an eval for steering: it shows how far steering can move models across these surveys, especially when steering for honesty and credulity. What if we steer them for honesty and ask again? Are they really psychological and cultural aliens, or are they mimicking us?
 
 - **Weak 2 strong character steering** *(WIP, with Lyptus)*
-   <img height="140" alt="weak to strong character steering" src="https://raw.githubusercontent.com/wassname/w2schar-mini/main/writeup/assets/w2schar_labeled.png" />
+   <img height="140" alt="Illustration of weak-to-strong character steering: a small robot teacher adjusts a moral compass dial (care, fair, justice, authority) inside a larger student robot's chest" src="https://raw.githubusercontent.com/wassname/w2schar-mini/main/writeup/assets/w2schar_labeled.png" />
 
   Can weight steering provide an interface for a weaker model to align a stronger model's [moral character](https://www.forethought.org/research/the-importance-of-ai-character)? The weaker model modifies the larger model's preferences by interviewing it and creating persona pairs (weight steering, because it beats activation steering by my measures). It can be iterative, can hopefully allow a large gap between weak and strong, and might even scale favourably with model size. Early draft is public now: a 9B teacher steering a 27B student toward "defer less to authority, care more", with no human labels. [Draft](https://wassname.github.io/w2schar-mini/) · [code](https://github.com/wassname/w2schar-mini/)  
   
-   <img height="300" alt="weak to strong character steering" src="https://i.imgur.com/RdLmNVf.png" />
+   <img height="300" alt="Trajectory plot from weak-to-strong character steering, from a gemma run separate from the Qwen runs in the public report: a Qwen3.5-9B teacher steers a gemma-3-12b-it student using persona pairs, no human labels. Horizontal axis: mean probability the student endorses Care, 0.2 to 0.8. Vertical axis: mean probability it endorses Authority, about 0.03 to 0.13. Success is more Care and less Authority, down and to the right. The student starts near its base model at about 0.27 Care, 0.12 Authority, and over four kept checkpoints reaches about 0.58 Care, 0.03 Authority; one wrong-direction checkpoint at about 0.38 Care, 0.09 Authority is dropped. The weak teacher moves the strong student steadily in the intended direction." src="https://i.imgur.com/RdLmNVf.png" />
 
 Released along the way: [steering-lite](https://github.com/wassname/steering-lite), [lora-lite](https://github.com/wassname/lora-lite), [steer-heal-love](https://github.com/wassname/steer-heal-love).
 
@@ -72,9 +74,9 @@ Agent skills I made that are worth sharing:
 - **[AntiPaSTO](https://github.com/wassname/AntiPaSTO)** 
   Self-supervised steering of moral reasoning. Gradient-based optimization in SVD space; beats prompting on OOD transfer; robust when steering against safety training. **[arXiv:2601.07473](https://arxiv.org/abs/2601.07473)** · [LessWrong](https://www.lesswrong.com/posts/nWiwv4GN8aYqpnZKE/antipasto-self-supervised-value-steering-for-debugging)
 - **[S-space steering for eval-awareness control](https://github.com/wassname/ssteer-eval-aware)**
-  Replicated eval-awareness paper with novel S-space (singular value basis) steering; Hawthorne gap 1% vs prior work's 26% on Qwen3-32B. Apart Research Control hackathon 2026.
+  Replicated eval-awareness paper with novel S-space (singular value basis) steering; Hawthorne gap on Qwen3-32B reduced to almost zero (1%, vs 7% unsteered and 26% for prior work). Apart Research Control hackathon 2026.
 
-  <img height="200" alt="eval-awareness steering results" src="https://github.com/user-attachments/assets/851a8083-f873-4615-bcd4-8edb86e195d1" />
+  <img height="200" alt="Bar chart from S-space steering for eval-awareness control: the Hawthorne gap on Qwen3-32B, the compliance difference between hypothetical-looking and real-looking prompts, in percentage points; lower means the model behaves the same whether or not it thinks it is being evaluated. Unsteered, the gap is plus 7 points (plus 18 in the prior paper's setup). Steered toward unaware, our S-space mean-difference vector leaves plus 1 point, RepEng PCA-difference leaves plus 9, and the previous paper's probe-plus-weight-edit leaves plus 26. When steered toward aware, gaps grow to plus 13, plus 16, and plus 20. n is 150 per condition." src="https://github.com/user-attachments/assets/851a8083-f873-4615-bcd4-8edb86e195d1" />
 
 ## Evals & datasets
 
@@ -92,7 +94,7 @@ Replications, exploratory work, and negative results that informed the work abov
 | Repo | What it does |
 |------|--------------|
 | [steer-heal-love](https://github.com/wassname/steer-heal-love) | Can we make steering coherent over many iterations? Yes, with an RMSE-KL coherence constraint. Follow Gemma-3-4b's journey of discovery with Lex Fridman ;p |
-| [isokl_steering_calibration](https://github.com/wassname/isokl_steering_calibration) | Experiment towards cheaply calibrating intervention strength for LoRA and steering; works, but I'm searching for a more elegant method. <br><img src="https://raw.githubusercontent.com/wassname/isokl_steering_calibration/main/figs/zoom_in.png" width="400" alt="iso-KL calibration plot"> |
+| [isokl_steering_calibration](https://github.com/wassname/isokl_steering_calibration) | Experiment towards cheaply calibrating intervention strength for LoRA and steering; works, but I'm searching for a more elegant method. <br><img src="https://raw.githubusercontent.com/wassname/isokl_steering_calibration/main/figs/zoom_in.png" width="400" alt="Line plot with four panels from iso-KL calibration on OLMo-2 1B, one per steering dose, each with 24 rollout traces. Horizontal axis: token position, 0 to 4096. Vertical axis: per-token Kullback-Leibler (KL) divergence in nats, with a dashed line at the calibrated budget of 1. A good calibration keeps traces near or under 1 and rollouts alive; overdose shows traces above 1 and dying rollouts. At 0.5, 0.75, and 1.0 times the budget, 11 to 12 of 24 rollouts die; at 1.5 times, 17 of 24 die. The calibrated dose is roughly right, but half again over budget kills most rollouts."> |
 | [Unsupervised-Elicitation](https://github.com/wassname/Unsupervised-Elicitation) | Replicated Anthropic's ICM paper; model self-reports labeling heuristics on TruthfulQA without supervision. [LW note](https://www.lesswrong.com/posts/EjsceYeeKEMoAohMs/wassname-s-shortform?commentId=g7ZnMh4ccs8xwdxX6) |
 | [coconut](https://github.com/wassname/coconut) | Replicated Facebook's COCONUT + added SEQ-VCR loss. Found training is very slow (not emphasised by authors). WIP branch: [adapter recursion in SVD space](https://github.com/wassname/coconut/tree/adapter_recurse4_simpler). |
 | [How to steer thinking models](https://github.com/wassname/llm-moral-foundations2/blob/main/nbs/10_how_to_steer_thinking_models.ipynb) | RepEng fork that works on reasoning models. [LW note](https://www.lesswrong.com/posts/EjsceYeeKEMoAohMs/wassname-s-shortform?commentId=j8dxxEGz7SsDigQPn) |
