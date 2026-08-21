@@ -15,17 +15,17 @@ Scalable, self-supervised alignment interventions. Ideally internal intervention
 
 I laid this agenda out in a 5 minute talk at the Sydney AI Safety Forum 2026: [Technical Advantages for Weak-to-Strong Oversight: Bets I'd Like Challenged](https://www.youtube.com/watch?v=e1PG9x08dKc).
 
-- **Jacobian-lens steering** *(WIP, coming soon)*
+- **Jacobian-lens steering** *(WIP)*
 
   Working on turning Anthropic's [Jacobian lens](https://transformer-circuits.pub/2026/workspace/index.html) work into contrastive steering. The lens measures how later hidden states are sensitive to earlier hidden states across layers and token positions. I replace its full Jacobian with one [vector-Jacobian product](https://wangkuiyi.github.io/jacobian.html) for the words associated with a contrastive steering vector, such as good versus evil. That cuts vector extraction on Qwen3.5-4B to about 90 seconds.
 
-  Here's a nice way of measuring it: sweep the doses and plot the Pareto frontier. The Jacobian (`vjp_delta`) method has a much better profile than mean difference and random on 20 questions from [Bullshit Benchmark v2](https://github.com/petergpt/bullshit-benchmark).
+  Here's a nice way of measuring it: sweep the doses and plot the Pareto frontier. The Jacobian (`vjp_delta`) method has a much better profile than mean difference and random on 20 questions from [Bullshit Benchmark v2](https://github.com/petergpt/bullshit-benchmark). The plot is an earlier 20-question render; the repo now runs all 100.
 
   <img height="260" alt="Tradeoff plot for Jacobian-lens steering: contrastive vectors from one vector-Jacobian product on Qwen3.5-4B, judged on 20 Bullshit Benchmark v2 questions. Horizontal axis: on-axis steering in judge points, abrasive (negative) to sycophantic (positive). Vertical axis: off-axis damage from 0 to about 0.9, lower is better. Good methods run high and flat; bad ones sink, then vanish as the model loses coherence. vjp_delta (ours) spans about minus 2.4 to plus 3.9 judge points at about 0.3 to 0.4 damage. mean_diff (baseline) reaches about minus 2.5 at 0.9 damage and plus 1.2 at 0.4. random (control) barely steers at low damage, with one degenerate branch near plus 3 at 0.9 damage. Only vjp_delta steers far both ways while staying near the top." src="assets/jacobian_steering_pareto.png" />
 
   In case it's not clear, good steering methods are high and horizontal, since they can steer left and right without much off-axis damage. Bad steering methods fall as side effects accumulate, then the line disappears when the model becomes incoherent.
 
-  [thread](https://x.com/wassname/status/2082634053619208334) · [Jacobian-lens code](https://github.com/anthropics/jacobian-lens) · my code coming soon
+  [thread](https://x.com/wassname/status/2082634053619208334) · [Jacobian-lens code](https://github.com/anthropics/jacobian-lens) · [my code](https://github.com/wassname/vjp-steering)
 
 - **vGROUT** *(partial negative, code public)*
   Quarantining reward hacking: can we use a hacking vector to route hacky gradients? Somewhat. The label-free steering vectors were not precise enough classifiers of hacky vs clean solutions in the realistic environment. The useful clue was initialization: signed-CorDA partially suppressed hacking by absorbing gradients into the hack-initialized quarantine adapter, dropping held-out hack from 0.529 to 0.195 (~63%) in one 4B run. This is not a deployable operating point, but it is useful evidence because it uses synthetic pairs not labels, and strong labels may not be available for unknown reward hacks during frontier training. [LW](https://www.lesswrong.com/posts/kzri5W2uBfF2mdboK/can-we-use-steering-vectors-to-suppress-reward-hacking-1) · [code](https://github.com/wassname/vGROUT_pub)
