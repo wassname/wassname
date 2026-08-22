@@ -2,8 +2,6 @@
 
 Principal Data Scientist @ Woodside · pragmatic alignment research. I want the good ending not the bad one.
 
-I work on AI alignment: steering, evals, and practical interpretability. Trying to build tools that ask AI hard questions and catch when they're lying. Long-term aim: unsupervised methods that make AI more moral than the humans who train it.
-
 **Links:** [wassname.org](https://wassname.org) · [Scholar](https://scholar.google.com/citations?user=giqv10cAAAAJ) · [Hugging Face](https://huggingface.co/wassname) · [LessWrong](https://www.lesswrong.com/users/wassname) · [Gists](https://gist.github.com/wassname)
 
 ---
