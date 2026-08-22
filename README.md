@@ -9,7 +9,7 @@ Principal Data Scientist @ Woodside · pragmatic alignment research. I want the 
 
 ## Current focus
 
-I want to build alignment tools that frontier labs will actually use in the next few years, and that have three nicer properties: closer to unsupervised learning, non-adversarial supervision, and closer to internal optimization targets. [Full research agenda](https://wassname.org/agenda.html), with pictures and a 5 minute talk. I'm always keen to discuss and brainstorm along these lines, so please come change my mind, [anonymously](https://admonymous.co/michael-c) if you prefer.
+I want to build alignment tools that frontier labs will actually use in the next few years, and that have three nicer properties: closer to unsupervised learning, non-adversarial oversight, and closer to internal optimization targets. [Full research agenda](https://wassname.org/agenda.html), with pictures and a 5 minute talk. I'm always keen to discuss and brainstorm along these lines, so please come change my mind, [anonymously](https://admonymous.co/michael-c) if you prefer.
 
 - **Jacobian-lens steering** *(WIP)*
 
