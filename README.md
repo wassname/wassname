@@ -15,7 +15,7 @@ I want to build alignment tools that frontier labs will actually use in the next
 
 1. We won't have labels as strong as the models we are aligning, so I prefer methods closer to unsupervised.
 2. I want to avoid setting a weak supervisor against a stronger student in an adversarial setting. Neutral is better, for example gradient routing detaches the adversarial gradient, and cooperative schemes like confessions are better still.
-3. I want to avoid distant and surrogate objectives like RLAIF because they are easily gamed, and instead prefer internal objectives.
+3. I want to avoid distant and surrogate objectives like RLAIF because they are easily gamed, and instead prefer objectives closer to the model: internal states first, then logprobs at the model boundary, and RL reward last.
 
 Of course no method gets everything, and a better tool that gets used is better than a perfect one that doesn't. I'm always keen to discuss and brainstorm along these lines.
 
