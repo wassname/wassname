@@ -9,15 +9,7 @@ Principal Data Scientist @ Woodside · pragmatic alignment research. I want the 
 
 ## Current focus
 
-I want to build alignment tools that frontier labs will actually use in the next few years, and that have three nicer properties.
-
-1. We won't have labels as strong as the models we are aligning, so I prefer methods closer to unsupervised.
-2. I want to avoid setting a weak supervisor against a stronger student in an adversarial setting. Neutral is better, for example gradient routing detaches the adversarial gradient, and cooperative schemes like confessions are better still.
-3. I want to avoid distant and surrogate objectives like RLAIF because they are easily gamed, and instead prefer objectives closer to the model: internal states first, then logprobs at the model boundary, and RL reward last.
-
-Of course no method gets everything, and a better tool that gets used is better than a perfect one that doesn't. I'm always keen to discuss and brainstorm along these lines.
-
-I laid this agenda out in a 5 minute talk at the Sydney AI Safety Forum 2026: [Technical Advantages for Weak-to-Strong Oversight: Bets I'd Like Challenged](https://www.youtube.com/watch?v=e1PG9x08dKc).
+I want to build alignment tools that frontier labs will actually use in the next few years, and that have three nicer properties: closer to unsupervised, non-adversarial, and closer to internal. [Full research agenda](https://wassname.org/agenda.html), with pictures and a 5 minute talk. I'm always keen to discuss and brainstorm along these lines.
 
 - **Jacobian-lens steering** *(WIP)*
 
