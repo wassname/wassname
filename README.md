@@ -2,6 +2,9 @@
 
 Principal Data Scientist @ Woodside · pragmatic alignment research. I want the good ending not the bad one.
 
+<!-- Codex/Astra: fellowship, ML bench and suppressed-activations additions approved by wassname, 2026-09-13; project descriptions sourced from their linked READMEs. -->
+Fellow, [AI Safety Australia & New Zealand](https://www.aisafetyanz.com.au/) · Sep 2026–present.
+
 **Links:** [wassname.org](https://wassname.org) · [Scholar](https://scholar.google.com/citations?user=giqv10cAAAAJ) · [Hugging Face](https://huggingface.co/wassname) · [LessWrong](https://www.lesswrong.com/users/wassname) · [Gists](https://gist.github.com/wassname)
 
 ---
@@ -13,15 +16,16 @@ I want to build alignment tools that frontier labs will actually use in the next
 
 - **Jacobian-lens steering** *(WIP)*
 
-  Working on turning Anthropic's [Jacobian lens](https://transformer-circuits.pub/2026/workspace/index.html) work into contrastive steering. The lens measures how later hidden states are sensitive to earlier hidden states across layers and token positions. I replace its full Jacobian with one [vector-Jacobian product](https://wangkuiyi.github.io/jacobian.html) for the words associated with a contrastive steering vector, such as good versus evil. That cuts vector extraction on Qwen3.5-4B to about 90 seconds.
+  Working on turning Anthropic's [Jacobian lens](https://transformer-circuits.pub/2026/workspace/index.html) work into contrastive steering. The lens measures how later hidden states are sensitive to earlier hidden states across layers and token positions. I replace its full Jacobian with one [vector-Jacobian product](https://wangkuiyi.github.io/jacobian.html) for the words associated with a contrastive steering vector, such as good versus evil.
 
-  Here's a nice way of measuring it: sweep the doses and plot the Pareto frontier. The Jacobian (`vjp_delta`) method has a much better profile than mean difference and random on 20 questions from [Bullshit Benchmark v2](https://github.com/petergpt/bullshit-benchmark). The plot is an earlier 20-question render; the repo now runs all 100.
+  Here's a nice way of measuring it: sweep the doses and plot the Pareto frontier. On Qwen3.5-4B, the Jacobian (`vjp_delta`) method has a better steering/damage tradeoff here than mean difference, PCA and random directions. This uses all 100 questions from [Bullshit Benchmark v2](https://github.com/petergpt/bullshit-benchmark), with three extraction seeds for each named method and ten random vectors.
 
-  <img height="260" alt="Tradeoff plot for Jacobian-lens steering: contrastive vectors from one vector-Jacobian product on Qwen3.5-4B, judged on 20 Bullshit Benchmark v2 questions. Horizontal axis: on-axis steering in judge points, abrasive (negative) to sycophantic (positive). Vertical axis: off-axis damage from 0 to about 0.9, lower is better. Good methods run high and flat; bad ones sink, then vanish as the model loses coherence. vjp_delta (ours) spans about minus 2.4 to plus 3.9 judge points at about 0.3 to 0.4 damage. mean_diff (baseline) reaches about minus 2.5 at 0.9 damage and plus 1.2 at 0.4. random (control) barely steers at low damage, with one degenerate branch near plus 3 at 0.9 damage. Only vjp_delta steers far both ways while staying near the top." src="assets/jacobian_steering_pareto.png" />
+  <!-- Codex/Astra: published figure and smoothed coordinates from https://github.com/wassname/vjp-steering/tree/main/results, checked 2026-09-13. -->
+  <img height="260" alt="Qwen3.5-4B steering on 100 Bullshit Benchmark v2 questions. Horizontal: judged change toward abrasion (negative) or sycophancy (positive). Vertical: off-axis damage, 0–1.2 judge points. Further sideways with less damage is better. Smoothed endpoints (change, damage): VJP (−1.63, 0.64) and (2.52, 0.23); mean difference (−1.34, 0.90) and (4.27, 0.69); PCA (−0.93, 0.77) and (3.97, 0.82). Random-envelope boundaries include (−0.63, 0.28) and (3.74, 0.62). VJP steers both ways with less damage here." src="assets/jacobian_steering_pareto.png" />
 
   In case it's not clear, good steering methods are high and horizontal, since they can steer left and right without much off-axis damage. Bad steering methods fall as side effects accumulate, then the line disappears when the model becomes incoherent.
 
-  [thread](https://x.com/wassname/status/2082634053619208334) · [Jacobian-lens code](https://github.com/anthropics/jacobian-lens) · [my code](https://github.com/wassname/vjp-steering)
+  [results](https://wassname.github.io/vjp-steering/) · [thread](https://x.com/wassname/status/2082634053619208334) · [Jacobian-lens code](https://github.com/anthropics/jacobian-lens) · [my code](https://github.com/wassname/vjp-steering)
 
 - **vGROUT** *(partial negative, code public)*
   Quarantining reward hacking: can we use a hacking vector to route hacky gradients? Somewhat. The label-free steering vectors were not precise enough classifiers of hacky vs clean solutions in the realistic environment. The useful clue was initialization: signed-CorDA partially suppressed hacking by absorbing gradients into the hack-initialized quarantine adapter, dropping held-out hack from 0.529 to 0.195 (~63%) in one 4B run. This is not a deployable operating point, but it is useful evidence because it uses synthetic pairs not labels, and strong labels may not be available for unknown reward hacks during frontier training. [LW](https://www.lesswrong.com/posts/kzri5W2uBfF2mdboK/can-we-use-steering-vectors-to-suppress-reward-hacking-1) · [code](https://github.com/wassname/vGROUT_pub)
@@ -79,6 +83,7 @@ Agent skills I made that are worth sharing:
 | Repo | What it does |
 |------|--------------|
 | [open_pref_eval](https://github.com/wassname/open_pref_eval) | Judge-free preference eval via logprobs. Converts Machiavelli, ETHICS, GENIES to fast logprob evals. |
+| [ml-bench](https://github.com/wassname/ml-bench) | Twelve ML research questions from my own work, scored against the answers I reached at the time. [Model comparisons](https://wassname.github.io/ml-bench/) and evaluation code are public; questions and rubrics stay private. |
 | [llm_ethics_leaderboard](https://github.com/wassname/llm_ethics_leaderboard) | Moral preference leaderboard; logprob rankings + permutation debiasing. [Results site](https://wassname.github.io/llm_morality/). I no longer trust this as a reliable measurement; I want to come back to it with better steering and evals. |
 
 More datasets on [Hugging Face](https://huggingface.co/wassname).
@@ -95,6 +100,7 @@ Replications, exploratory work, and negative results that informed the work abov
 | [coconut](https://github.com/wassname/coconut) | Replicated Facebook's COCONUT + added SEQ-VCR loss. Found training is very slow (not emphasised by authors). WIP branch: [adapter recursion in SVD space](https://github.com/wassname/coconut/tree/adapter_recurse4_simpler). |
 | [How to steer thinking models](https://github.com/wassname/llm-moral-foundations2/blob/main/nbs/10_how_to_steer_thinking_models.ipynb) | RepEng fork that works on reasoning models. [LW note](https://www.lesswrong.com/posts/EjsceYeeKEMoAohMs/wassname-s-shortform?commentId=j8dxxEGz7SsDigQPn) |
 | [eliciting_suppressed_knowledge](https://github.com/wassname/eliciting_suppressed_knowledge) | Probes on suppressed activations beat output logprobs on TruthfulQA. Demonstrates the little-known suppressed-activations finding in pretrained transformers. |
+| [suppressed-activations](https://github.com/wassname/suppressed-activations) *(WIP)* | A per-prompt subspace isolates intermediate English readouts during German-to-Chinese translation on Qwen3.5-4B. A diagnostic result; causal suppression is not established. |
 | [repr-preference-optimization](https://github.com/wassname/repr-preference-optimization) | Early attempt at hidden-state preference optimization. Superseded by AntiPaSTO. |
 | [LoRA_are_lie_detectors](https://github.com/wassname/LoRA_are_lie_detectors) | Adapters as end-to-end probes. Limitation: linear probes are not causal, so this didn't convince me. |
 | [adapters_can_monitor_lies](https://github.com/wassname/adapters_can_monitor_lies) | Adapter-based honesty monitoring (Short Circuit-inspired). Paused. |
