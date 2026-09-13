@@ -1,9 +1,6 @@
 # wassname
 
-Principal Data Scientist @ Woodside · pragmatic alignment research. I want the good ending not the bad one.
-
-<!-- Codex/Astra: fellowship, ML bench and suppressed-activations additions approved by wassname, 2026-09-13; project descriptions sourced from their linked READMEs. -->
-Fellow, [AI Safety Australia & New Zealand](https://www.aisafetyanz.com.au/) · Sep 2026–present.
+Principal Data Scientist @ Woodside · pragmatic alignment research fellow @ [AISANZ](https://www.aisafetyanz.com.au/). I want the good ending not the bad one.
 
 **Links:** [wassname.org](https://wassname.org) · [Scholar](https://scholar.google.com/citations?user=giqv10cAAAAJ) · [Hugging Face](https://huggingface.co/wassname) · [LessWrong](https://www.lesswrong.com/users/wassname) · [Gists](https://gist.github.com/wassname)
 
