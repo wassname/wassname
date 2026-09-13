@@ -79,8 +79,8 @@ Agent skills I made that are worth sharing:
 
 | Repo | What it does |
 |------|--------------|
+| [ml-bench](https://github.com/wassname/ml-bench) | Twelve ML research questions from my own work, scored against the answers I reached at the time. [Model comparisons](https://wassname.github.io/ml-bench/) and evaluation code are public; questions and rubrics stay private. <br><a href="https://wassname.github.io/ml-bench/"><img width="300" src="assets/ml_bench_screenshot.png" alt="Screenshot of ML bench, comparing models on twelve questions from wassname's research. Horizontal: US dollars per twelve-question run, logarithmic scale; vertical: mean score, with wassname's answers scoring 1. Upper left is better. Selected points (cost, score): GLM-5.3-Flash ($0.0098, 0.73), GPT-5.6-Sol ($0.23, 0.76), Claude Opus 5 ($0.78, 0.85), and Fable 5.1 ($1.97, 0.85, using Opus for one refused question). Higher cost does not always buy a higher score. Opens interactive results." /></a> |
 | [open_pref_eval](https://github.com/wassname/open_pref_eval) | Judge-free preference eval via logprobs. Converts Machiavelli, ETHICS, GENIES to fast logprob evals. |
-| [ml-bench](https://github.com/wassname/ml-bench) | Twelve ML research questions from my own work, scored against the answers I reached at the time. [Model comparisons](https://wassname.github.io/ml-bench/) and evaluation code are public; questions and rubrics stay private. |
 | [llm_ethics_leaderboard](https://github.com/wassname/llm_ethics_leaderboard) | Moral preference leaderboard; logprob rankings + permutation debiasing. [Results site](https://wassname.github.io/llm_morality/). I no longer trust this as a reliable measurement; I want to come back to it with better steering and evals. |
 
 More datasets on [Hugging Face](https://huggingface.co/wassname).
