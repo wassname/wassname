@@ -1,6 +1,6 @@
 # wassname
 
-Principal Data Scientist @ Woodside · pragmatic alignment research fellow @ [AISANZ](https://www.aisafetyanz.com.au/). I want the good ending not the bad one.
+Principal Data Scientist @ Woodside · pragmatic alignment as research fellow @ [AISANZ](https://www.aisafetyanz.com.au/). I want the good ending not the bad one.
 
 **Links:** [wassname.org](https://wassname.org) · [Scholar](https://scholar.google.com/citations?user=giqv10cAAAAJ) · [Hugging Face](https://huggingface.co/wassname) · [LessWrong](https://www.lesswrong.com/users/wassname) · [Gists](https://gist.github.com/wassname)
 
