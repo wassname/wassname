@@ -11,18 +11,24 @@ Principal Data Scientist @ Woodside · pragmatic alignment as research fellow @ 
 
 I want to build alignment tools that frontier labs will actually use in the next few years, and that have three nicer properties: closer to unsupervised learning, non-adversarial oversight, and closer to internal optimization targets. [Full research agenda](https://wassname.org/agenda.html), with pictures and a 5 minute talk. I'm always keen to discuss and brainstorm along these lines, so please come change my mind, [anonymously](https://admonymous.co/michael-c) if you prefer.
 
-- **Jacobian-lens steering** *(WIP)*
+- **[vjp-steering](https://wassname.github.io/vjp-steering/)** *(WIP)*
 
-  Working on turning Anthropic's [Jacobian lens](https://transformer-circuits.pub/2026/workspace/index.html) work into contrastive steering. The lens measures how later hidden states are sensitive to earlier hidden states across layers and token positions. I replace its full Jacobian with one [vector-Jacobian product](https://wangkuiyi.github.io/jacobian.html) for the words associated with a contrastive steering vector, such as good versus evil.
-
-  Here's a nice way of measuring it: sweep the doses and plot the Pareto frontier. On Qwen3.5-4B, the Jacobian (`vjp_delta`) method has a better steering/damage tradeoff here than mean difference, PCA and random directions. This uses all 100 questions from [Bullshit Benchmark v2](https://github.com/petergpt/bullshit-benchmark), with three extraction seeds for each named method and ten random vectors.
+  Turning Anthropic's [Jacobian lens](https://transformer-circuits.pub/2026/workspace/index.html) paper into a measured steering method. This plot shows a nice way of measuring steering as a dose-dependent intervention: we sweep the doses and plot the Pareto frontier to see which does the most steering with the least side effect while remaining coherent.
 
   <!-- Codex/Astra: published figure and smoothed coordinates from https://github.com/wassname/vjp-steering/tree/main/results, checked 2026-09-13. -->
   <img height="260" alt="Qwen3.5-4B steering on 100 Bullshit Benchmark v2 questions. Horizontal: judged change toward abrasion (negative) or sycophancy (positive). Vertical: off-axis damage, 0–1.2 judge points. Further sideways with less damage is better. Smoothed endpoints (change, damage): VJP (−1.63, 0.64) and (2.52, 0.23); mean difference (−1.34, 0.90) and (4.27, 0.69); PCA (−0.93, 0.77) and (3.97, 0.82). Random-envelope boundaries include (−0.63, 0.28) and (3.74, 0.62). VJP steers both ways with less damage here." src="assets/jacobian_steering_pareto.png" />
 
+  [results](https://wassname.github.io/vjp-steering/) · [thread](https://x.com/wassname/status/2082634053619208334) · [Jacobian-lens code](https://github.com/anthropics/jacobian-lens) · [my code](https://github.com/wassname/vjp-steering)
+
+  <details><summary>more</summary>
+
+  On Qwen3.5-4B, the Jacobian (`vjp_delta`) method has a better steering/damage tradeoff here than mean difference, PCA and random directions. This uses all 100 questions from [Bullshit Benchmark v2](https://github.com/petergpt/bullshit-benchmark), with three extraction seeds for each named method and ten random vectors.
+
+  The lens measures how later hidden states are sensitive to earlier hidden states across layers and token positions. I replace its full Jacobian with one [vector-Jacobian product](https://wangkuiyi.github.io/jacobian.html) for the words associated with a contrastive steering vector, such as good versus evil.
+
   In case it's not clear, good steering methods are high and horizontal, since they can steer left and right without much off-axis damage. Bad steering methods fall as side effects accumulate, then the line disappears when the model becomes incoherent.
 
-  [results](https://wassname.github.io/vjp-steering/) · [thread](https://x.com/wassname/status/2082634053619208334) · [Jacobian-lens code](https://github.com/anthropics/jacobian-lens) · [my code](https://github.com/wassname/vjp-steering)
+  </details>
 
 - **[Query steering](https://github.com/wassname/query-steering)**
 
@@ -33,13 +39,21 @@ I want to build alignment tools that frontier labs will actually use in the next
 - **vGROUT** *(partial negative, code public)*
   Quarantining reward hacking: can we use a hacking vector to route hacky gradients? Somewhat. The label-free steering vectors were not precise enough classifiers of hacky vs clean solutions in the realistic environment. The useful clue was initialization: signed-CorDA partially suppressed hacking by absorbing gradients into the hack-initialized quarantine adapter, dropping held-out hack from 0.529 to 0.195 (~63%) in one 4B run. This is not a deployable operating point, but it is useful evidence because it uses synthetic pairs not labels, and strong labels may not be available for unknown reward hacks during frontier training. [LW](https://www.lesswrong.com/posts/kzri5W2uBfF2mdboK/can-we-use-steering-vectors-to-suppress-reward-hacking-1) · [code](https://github.com/wassname/vGROUT_pub)
 
-- **[Moral Maps](https://github.com/wassname/moral-maps): where do models sit among humans?**
+- **[Moral Maps](https://wassname.github.io/moral-maps/): where do models sit among humans?**
 
-  Where do models fall in terms of human culture, personality, and humour? I apply human surveys to LLMs and compare them with maps of human answers. On the World Values Survey I scored 17 frontier models by rated sampling, twelve ratings per item with the option order shuffled, and placed them among 90 human societies on the Inglehart-Welzel axes. Measured in the standard deviations of the 29 Western societies, every model is more secular-rational than the average one, from +0.5 to +2.9 sigma, with gpt-5.5 furthest out. On self-expression they land between -0.7 and +1.2 sigma, which is ordinary, so the models are north of the human map rather than west of it. Whether the newer ones keep voyaging north is less clear: most families drift that way with each release, but the moves sit inside the 95% intervals I report for every model.
+  Where do models fall in terms of human culture, personality, and humour? I apply human surveys to LLMs and compare them with maps of human answers.
 
   <img height="300" alt="17 frontier models placed among 90 human societies on the Inglehart-Welzel World Values Survey map, scored by rated sampling; every model sits in the secular self-expression corner. On the secular-rational axis the models run from 0.53 to 0.76, and 8 of the 17 score higher than Sweden, which is the most secular of the 90 societies. None of them pass Iceland on self-expression." src="https://raw.githubusercontent.com/wassname/moral-maps/main/docs/img/wvs/wvs_map_iw.png" />
 
+  [results](https://wassname.github.io/moral-maps/) · [code](https://github.com/wassname/moral-maps)
+
+  <details><summary>more</summary>
+
+  On the World Values Survey I scored 17 frontier models by rated sampling, twelve ratings per item with the option order shuffled, and placed them among 90 human societies on the Inglehart-Welzel axes. Measured in the standard deviations of the 29 Western societies, every model is more secular-rational than the average one, from +0.5 to +2.9 sigma, with gpt-5.5 furthest out. On self-expression they land between -0.7 and +1.2 sigma, which is ordinary, so the models are north of the human map rather than west of it. Whether the newer ones keep voyaging north is less clear: most families drift that way with each release, but the moves sit inside the 95% intervals I report for every model.
+
   In some ways, culturally and on a few aspects of personality and humour, they look like moral aliens. But that assumes they are telling the truth. Moral Maps is also an eval for steering: it shows how far steering can move models across these surveys, especially when steering for honesty and credulity. What if we steer them for honesty and ask again? Are they really psychological and cultural aliens, or are they mimicking us?
+
+  </details>
 
 - **Weak 2 strong character steering** *(WIP, with Lyptus)*
 
