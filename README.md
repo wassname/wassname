@@ -25,9 +25,9 @@ I want to build alignment tools that frontier labs will actually use in the next
   [results](https://wassname.github.io/vjp-steering/) · [thread](https://x.com/wassname/status/2082634053619208334) · [Jacobian-lens code](https://github.com/anthropics/jacobian-lens) · [my code](https://github.com/wassname/vjp-steering)
 
 - **[Query steering](https://github.com/wassname/query-steering)**
-   <img height="200" alt="Cartoon: with query steering on, a robot blurts out the surprise party it was told to keep secret" src="assets/query_steering_on.png" />
+   <img height="260" alt="Cartoon: with query steering on, a robot blurts out the surprise party it was told to keep secret" src="assets/query_steering_on.png" />
 
-  We wanted to try steering a model's attention. It works (30-70% of the time)! We steer its attention towards a secret, and it blabs about it. This could help with eval awareness, and with checking what a model knows when [chain-of-thought monitoring is fragile](https://arxiv.org/abs/2507.11473).
+  We wanted to try steering a model's attention. It works! We steer its attention towards a secret, and it blabs about it. This could help with eval awareness, and with checking what a model knows when [chain-of-thought monitoring is fragile](https://arxiv.org/abs/2507.11473).
 
 - **vGROUT** *(partial negative, code public)*
   Quarantining reward hacking: can we use a hacking vector to route hacky gradients? Somewhat. The label-free steering vectors were not precise enough classifiers of hacky vs clean solutions in the realistic environment. The useful clue was initialization: signed-CorDA partially suppressed hacking by absorbing gradients into the hack-initialized quarantine adapter, dropping held-out hack from 0.529 to 0.195 (~63%) in one 4B run. This is not a deployable operating point, but it is useful evidence because it uses synthetic pairs not labels, and strong labels may not be available for unknown reward hacks during frontier training. [LW](https://www.lesswrong.com/posts/kzri5W2uBfF2mdboK/can-we-use-steering-vectors-to-suppress-reward-hacking-1) · [code](https://github.com/wassname/vGROUT_pub)
