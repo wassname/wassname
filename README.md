@@ -9,7 +9,9 @@ Principal Data Scientist @ Woodside · pragmatic alignment as research fellow @ 
 
 ## Current focus
 
-I want to build alignment tools that frontier labs will actually use in the next few years, and that have three nicer properties: closer to unsupervised learning, non-adversarial oversight, and closer to internal optimization targets. [Full research agenda](https://wassname.org/agenda.html), with pictures and a 5 minute talk. I'm always keen to discuss and brainstorm along these lines, so please come change my mind, [anonymously](https://admonymous.co/michael-c) if you prefer.
+My goal is to give models [**good, robust, unsupervised, moral character**](https://wassname.com/agenda-character.html).
+
+As part of this, I want to **build alignment tools** that frontier labs will actually use in the next few years, and that have three nicer properties: closer to unsupervised learning, non-adversarial oversight, and closer to internal optimization targets. [Tools subagenda](https://wassname.com/agenda-tools.html), with pictures and a 5 minute talk. I'm always keen to discuss and brainstorm along these lines, so please come change my mind, [anonymously](https://admonymous.co/michael-c) if you prefer.
 
 - **[vjp-steering](https://wassname.github.io/vjp-steering/)** *(WIP)*
 
