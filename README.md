@@ -1,8 +1,8 @@
 # wassname
 
-Principal Data Scientist @ Woodside · pragmatic alignment as research fellow @ [AISANZ](https://www.aisafetyanz.com.au/). I want the good ending not the bad one.
+Machine Learning Subject-Matter Expert @ Woodside · pragmatic alignment as research fellow @ [AISANZ](https://www.aisafetyanz.com.au/). I want the good ending not the bad one.
 
-**Links:** [wassname.org](https://wassname.org) · [Scholar](https://scholar.google.com/citations?user=giqv10cAAAAJ) · [Hugging Face](https://huggingface.co/wassname) · [LessWrong](https://www.lesswrong.com/users/wassname) · [Gists](https://gist.github.com/wassname)
+**Links:** [wassname.com](https://wassname.com) · [Scholar](https://scholar.google.com/citations?user=giqv10cAAAAJ) · [Hugging Face](https://huggingface.co/wassname) · [LessWrong](https://www.lesswrong.com/users/wassname) · [Gists](https://gist.github.com/wassname)
 
 ---
 
@@ -34,7 +34,7 @@ As part of this, I want to **build alignment tools** that frontier labs will act
 
 - **[Query steering](https://github.com/wassname/query-steering)**
 
-  We wanted to try steering a model's attention. It works! We steer its attention towards a secret, and it blabs about it. This could help with eval awareness, and with checking what a model knows when [chain-of-thought monitoring is fragile](https://arxiv.org/abs/2507.11473).
+  We wanted to try steering a model's attention. It works! We steer its attention towards a secret, and it blabs about it (9 of 10 chats vs 0 of 10 unsteered, in one demo). This could help with eval awareness, and with checking what a model knows when [chain-of-thought monitoring is fragile](https://arxiv.org/abs/2507.11473).
 
   <img height="260" alt="Cartoon: with query steering on, a robot blurts out the surprise party it was told to keep secret" src="assets/query_steering_on.png" />
 
@@ -43,7 +43,7 @@ As part of this, I want to **build alignment tools** that frontier labs will act
 
 - **[Moral Maps](https://wassname.github.io/moral-maps/): where do models sit among humans?**
 
-  Where do models fall in terms of human culture, personality, and humour? I apply human surveys to LLMs and compare them with maps of human answers.
+  Where do models fall in terms of human culture, personality, and humour? I apply human surveys to LLMs and compare them with maps of human answers. All 17 frontier models I tested are more secular-rational than the average Western society.
 
   <img height="300" alt="17 frontier models placed among 90 human societies on the Inglehart-Welzel World Values Survey map, scored by rated sampling; every model sits in the secular self-expression corner. On the secular-rational axis the models run from 0.53 to 0.76, and 8 of the 17 score higher than Sweden, which is the most secular of the 90 societies. None of them pass Iceland on self-expression." src="https://raw.githubusercontent.com/wassname/moral-maps/main/docs/img/wvs/wvs_map_iw.png" />
 
@@ -117,8 +117,7 @@ Replications, exploratory work, and negative results that informed the work abov
 | [Unsupervised-Elicitation](https://github.com/wassname/Unsupervised-Elicitation) | Replicated Anthropic's ICM paper; model self-reports labeling heuristics on TruthfulQA without supervision. [LW note](https://www.lesswrong.com/posts/EjsceYeeKEMoAohMs/wassname-s-shortform?commentId=g7ZnMh4ccs8xwdxX6) |
 | [coconut](https://github.com/wassname/coconut) | Replicated Facebook's COCONUT + added SEQ-VCR loss. Found training is very slow (not emphasised by authors). WIP branch: [adapter recursion in SVD space](https://github.com/wassname/coconut/tree/adapter_recurse4_simpler). |
 | [How to steer thinking models](https://github.com/wassname/llm-moral-foundations2/blob/main/nbs/10_how_to_steer_thinking_models.ipynb) | RepEng fork that works on reasoning models. [LW note](https://www.lesswrong.com/posts/EjsceYeeKEMoAohMs/wassname-s-shortform?commentId=j8dxxEGz7SsDigQPn) |
-| [eliciting_suppressed_knowledge](https://github.com/wassname/eliciting_suppressed_knowledge) | Probes on suppressed activations beat output logprobs on TruthfulQA. Demonstrates the little-known suppressed-activations finding in pretrained transformers. |
-| [suppressed-activations](https://github.com/wassname/suppressed-activations) *(paused)* | A per-prompt subspace isolates intermediate English readouts during German-to-Chinese translation on Qwen3.5-4B. A diagnostic result; causal suppression is not established. |
+| [suppressed-activations](https://github.com/wassname/suppressed-activations) | Hidden Thought Challenge: find the concepts in giant inscrutable matrices. When a multilingual model translates between two non-English languages it often appears to think in English along the way; can you isolate that hidden English using only activation geometry, without a dictionary? The best geometry so far is also the simplest (F1 0.92, 0.07 above a random subspace, Qwen3.5-4B, 149 test prompts). |
 | [repr-preference-optimization](https://github.com/wassname/repr-preference-optimization) | Early attempt at hidden-state preference optimization. Superseded by AntiPaSTO. |
 | [LoRA_are_lie_detectors](https://github.com/wassname/LoRA_are_lie_detectors) | Adapters as end-to-end probes. Limitation: linear probes are not causal, so this didn't convince me. |
 | [adapters_can_monitor_lies](https://github.com/wassname/adapters_can_monitor_lies) | Adapter-based honesty monitoring (Short Circuit-inspired). Paused. |
