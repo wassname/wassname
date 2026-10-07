@@ -90,7 +90,7 @@ Agent skills I made that are worth sharing:
 ## Alignment research
 
 - **[AntiPaSTO](https://github.com/wassname/AntiPaSTO)** 
-  Self-supervised steering of moral reasoning. Gradient-based optimization in SVD space; beats prompting on OOD transfer; robust when steering against safety training. **[arXiv:2601.07473](https://arxiv.org/abs/2601.07473)** · [LessWrong](https://www.lesswrong.com/posts/nWiwv4GN8aYqpnZKE/antipasto-self-supervised-value-steering-for-debugging)
+  Self-supervised steering of moral reasoning. Gradient-based optimization in SVD space; beats prompting on OOD transfer on Gemma-3-1B (an independent reproduction recovered the smaller 270M result, not the 1B one); robust when steering against safety training. **[arXiv:2601.07473](https://arxiv.org/abs/2601.07473)** · [LessWrong](https://www.lesswrong.com/posts/nWiwv4GN8aYqpnZKE/antipasto-self-supervised-value-steering-for-debugging)
 - **[SVD-basis steering for eval-awareness control](https://github.com/wassname/ssteer-eval-aware)**
   Replicated the eval-awareness paper with novel SVD-basis steering, which perturbs the singular-value basis of the weight matrices rather than the activations. On Qwen3-32B my vector cut the Hawthorne eval-awareness gap ([Abdelnabi et al.](https://arxiv.org/abs/2505.14617)) from +7pp to +1pp, where the paper's own rank-1 weight edit widened its gap from +18pp to +26pp. Apart Research Control hackathon 2026, [judge comments](https://apartresearch.com/project/sspace-steering-for-evalawareness-control-in-reasoning-models-7j1i).
 
