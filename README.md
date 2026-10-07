@@ -57,7 +57,7 @@ As part of this, I want to **build alignment tools** that frontier labs will act
 
   </details>
 
-- **Weak 2 strong character steering** *(WIP, with Lyptus)*
+- **Weak 2 strong character steering** *(with Lyptus)*
 
   Can weight steering provide an interface for a weaker model to align a stronger model's [moral character](https://www.forethought.org/research/the-importance-of-ai-character)? The weaker model modifies the larger model's preferences by interviewing it and creating persona pairs (weight steering, because in [my comparison](https://www.lesswrong.com/posts/HYTbakdHpxfaCowYp/steering-language-models-with-weight-arithmetic?commentId=GomjgJDtr5JhEAuC3) it moved the target slightly further than activation steering, with the lowest run-to-run variance in the table). It can be iterative, can hopefully allow a large gap between weak and strong, and might even scale favourably with model size. Early draft is public now: a 9B teacher steering a 27B student toward "defer less to authority, care more", with no human labels. [Draft](https://wassname.github.io/w2schar-mini/) · [code](https://github.com/wassname/w2schar-mini/)
 
