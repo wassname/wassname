@@ -13,6 +13,14 @@ My goal is to give models [**good, robust, unsupervised, moral character**](http
 
 As part of this, I want to **build alignment tools** that frontier labs will actually use in the next few years, and that have three nicer properties: closer to unsupervised learning, non-adversarial oversight, and closer to internal optimization targets. [Tools subagenda](https://wassname.com/agenda-tools.html), with pictures and a 5 minute talk. I'm always keen to discuss and brainstorm along these lines, so please come change my mind, [anonymously](https://admonymous.co/michael-c) if you prefer.
 
+- **[Unspoken Concepts Challenge](https://github.com/wassname/unspoken-concepts)**
+
+  Find the unspoken intermediate concepts in a language model. Qwen reads a question in Arabic and answers 8. In between, it thinks of spiders, then legs, then eight. This challenge is to find those unspoken concepts, not the input or output.
+
+  <img height="260" alt="Distribution schematic across layers: an early grey input curve contains an Arabic question, an orange middle curve contains spider and 蜘蛛 with an arrow saying find this, and a late blue output curve contains Russian восемь. A separate strip below aligns the English translations: How many legs on a web-spinning animal?, spider / spider, and eight. Arrows say not this for both input and output. The curves and Russian answer are illustrative." src="https://raw.githubusercontent.com/wassname/unspoken-concepts/main/figs/cartoon.png" />
+
+  [challenge](https://github.com/wassname/unspoken-concepts)
+
 - **[vjp-steering](https://wassname.github.io/vjp-steering/)** *(WIP)*
 
   Turning Anthropic's [Jacobian lens](https://transformer-circuits.pub/2026/workspace/index.html) paper into a measured steering method. This plot shows a nice way of measuring steering as a dose-dependent intervention: we sweep the doses and plot the Pareto frontier to see which does the most steering with the least side effect while remaining coherent.
@@ -73,7 +81,7 @@ Ones I use and recommend:
 
 | Repo | What it does |
 |------|--------------|
-| [steering-lite](https://github.com/wassname/steering-lite) | Hackable forward-hook activation steering; calibrated and tested. |
+| [steering-lite](https://github.com/wassname/steering-lite) | Hackable activation steering. About 20 methods, compared. |
 | [lora-lite](https://github.com/wassname/lora-lite) | Hackable single-file-per-variant LoRA built on forward hooks. Tested on GSM8K. |
 | [cwsteer](https://github.com/wassname/cwsteer) | Contrastive weight steering: generate pairs, filter them, train one signed adapter, calibrate steering strength, bake for inference. |
 | [persona-steering-template-library](https://github.com/wassname/persona-steering-template-library) | Persona/template validation for steering pairs; checks on-axis movement without obvious refusal, length, style, or assistant-tone confounds. |
@@ -117,7 +125,6 @@ Replications, exploratory work, and negative results that informed the work abov
 | [Unsupervised-Elicitation](https://github.com/wassname/Unsupervised-Elicitation) | Replicated Anthropic's ICM paper; model self-reports labeling heuristics on TruthfulQA without supervision. [LW note](https://www.lesswrong.com/posts/EjsceYeeKEMoAohMs/wassname-s-shortform?commentId=g7ZnMh4ccs8xwdxX6) |
 | [coconut](https://github.com/wassname/coconut) | Replicated Facebook's COCONUT + added SEQ-VCR loss. Found training is very slow (not emphasised by authors). WIP branch: [adapter recursion in SVD space](https://github.com/wassname/coconut/tree/adapter_recurse4_simpler). |
 | [How to steer thinking models](https://github.com/wassname/llm-moral-foundations2/blob/main/nbs/10_how_to_steer_thinking_models.ipynb) | RepEng fork that works on reasoning models. [LW note](https://www.lesswrong.com/posts/EjsceYeeKEMoAohMs/wassname-s-shortform?commentId=j8dxxEGz7SsDigQPn) |
-| [suppressed-activations](https://github.com/wassname/suppressed-activations) | Hidden Thought Challenge: find the concepts in giant inscrutable matrices. When a multilingual model translates between two non-English languages it often appears to think in English along the way; can you isolate that hidden English using only activation geometry, without a dictionary? The best geometry so far is also the simplest (F1 0.92, 0.07 above a random subspace, Qwen3.5-4B, 149 test prompts). |
 | [repr-preference-optimization](https://github.com/wassname/repr-preference-optimization) | Early attempt at hidden-state preference optimization. Superseded by AntiPaSTO. |
 | [LoRA_are_lie_detectors](https://github.com/wassname/LoRA_are_lie_detectors) | Adapters as end-to-end probes. Limitation: linear probes are not causal, so this didn't convince me. |
 | [adapters_can_monitor_lies](https://github.com/wassname/adapters_can_monitor_lies) | Adapter-based honesty monitoring (Short Circuit-inspired). Paused. |
