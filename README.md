@@ -13,12 +13,12 @@ My goal is to give models [**good, robust, unsupervised, moral character**](http
 
 As part of this, I want to **build alignment tools** that frontier labs will actually use in the next few years, and that have three nicer properties: closer to unsupervised learning, non-adversarial oversight, and closer to internal optimization targets. [Tools subagenda](https://wassname.com/agenda-tools.html), with pictures and a 5 minute talk. I'm always keen to discuss and brainstorm along these lines, so please come change my mind, [anonymously](https://admonymous.co/michael-c) if you prefer.
 
-<!-- PI/OpenAI: approved copy; recipe estimate and social image from wassname/constitutional_grafting, source aadde85827f69776039ad205a3a775b87cb57988. -->
+<!-- PI/OpenAI: recipe source aadde85827f69776039ad205a3a775b87cb57988 in wassname/constitutional_grafting; thumbnail supplied by wassname. -->
 - **[Musonius: cheap constitutional character training](https://github.com/wassname/constitutional_grafting)** *(WIP)*
 
   Can individuals afford to train an AI's moral character? Building on [Nutter et al.'s grafting method](https://arxiv.org/abs/2610.00767), the recipe estimates $30 of GPU time and $100 of API calls. Our example is Musonius, a Stoic-inspired AI persona trained to reason from virtues rather than follow assistant rules. Early results compare it with the original Qwen3.5-35B-A3B.
 
-  <a href="https://github.com/wassname/constitutional_grafting"><img width="400" alt="Pizza illustration surrounded by a laurel wreath, titled Constitutional grafting: Nonna Musonius's recipe for AI character." src="assets/musonius_constitutional_grafting.png" /></a>
+  <a href="https://github.com/wassname/constitutional_grafting"><img width="260" alt="Illustration titled Constitutional grafting: a basil-leaf constitution is inserted between a pizza base labelled Pretraining and a topped pizza labelled Post-training; a tomato above is labelled RL." src="assets/musonius_constitutional_grafting.png" /></a>
 
   [Constitution](https://github.com/wassname/constitutional_grafting/blob/main/constitution/v4.md) · [Recipe and examples](https://github.com/wassname/constitutional_grafting#the-recipe-of-nonna-musonius)
 
