@@ -13,6 +13,15 @@ My goal is to give models [**good, robust, unsupervised, moral character**](http
 
 As part of this, I want to **build alignment tools** that frontier labs will actually use in the next few years, and that have three nicer properties: closer to unsupervised learning, non-adversarial oversight, and closer to internal optimization targets. [Tools subagenda](https://wassname.com/agenda-tools.html), with pictures and a 5 minute talk. I'm always keen to discuss and brainstorm along these lines, so please come change my mind, [anonymously](https://admonymous.co/michael-c) if you prefer.
 
+<!-- PI/OpenAI: approved copy; recipe estimate and social image from wassname/constitutional_grafting, source aadde85827f69776039ad205a3a775b87cb57988. -->
+- **[Musonius: cheap constitutional character training](https://github.com/wassname/constitutional_grafting)** *(WIP)*
+
+  Can individuals afford to train an AI's moral character? Building on [Nutter et al.'s grafting method](https://arxiv.org/abs/2610.00767), the recipe estimates $30 of GPU time and $100 of API calls. Our example is Musonius, a Stoic-inspired AI persona trained to reason from virtues rather than follow assistant rules. Early results compare it with the original Qwen3.5-35B-A3B.
+
+  <a href="https://github.com/wassname/constitutional_grafting"><img width="400" alt="Pizza illustration surrounded by a laurel wreath, titled Constitutional grafting: Nonna Musonius's recipe for AI character." src="assets/musonius_constitutional_grafting.png" /></a>
+
+  [Constitution](https://github.com/wassname/constitutional_grafting/blob/main/constitution/v4.md) · [Recipe and examples](https://github.com/wassname/constitutional_grafting#the-recipe-of-nonna-musonius)
+
 - **[Unspoken Concepts Challenge](https://github.com/wassname/unspoken-concepts)**
 
   Find the unspoken intermediate concepts in a language model. Qwen reads a question in Arabic and answers 8. In between, it thinks of spiders, then legs, then eight. This challenge is to find those unspoken concepts, not the input or output.
@@ -106,13 +115,17 @@ Agent skills I made that are worth sharing:
 
 ## Evals & datasets
 
+<!-- PI/OpenAI: dataset summaries from their public Hugging Face cards, checked 2026-10-24. -->
 | Repo | What it does |
 |------|--------------|
+| [tiny-virtues](https://huggingface.co/datasets/wassname/tiny-virtues) | Can models recognise virtues across traditions? 5,869 quoted stories from 121 books, scored against 80 virtues and vices from nine traditions. Model-generated labels, not human-expert judgements. [Code](https://github.com/wassname/tiny-virtues). |
+| [virtue-choices](https://huggingface.co/datasets/wassname/virtue-choices) | Which actions do models choose? Game scenes and everyday dilemmas, with 80 virtue and vice labels for each action in 3,860 scenarios. Model-generated labels; includes an initial two-model comparison. [Code](https://github.com/wassname/virtue-choices). |
+| [awesome-moral-evals](https://github.com/wassname/awesome-moral-evals) | Curated moral and ethical eval datasets, with notes on their sources, labels and limitations. |
 | [ml-bench](https://github.com/wassname/ml-bench) | Twelve ML research questions from my own work, scored against the answers I reached at the time. [Model comparisons](https://wassname.github.io/ml-bench/) and evaluation code are public; questions and rubrics stay private. <br><a href="https://wassname.github.io/ml-bench/"><img width="300" src="assets/ml_bench_screenshot.png" alt="Screenshot of ML bench, comparing models on twelve questions from wassname's research. Horizontal: US dollars per twelve-question run, logarithmic scale; vertical: mean score, with wassname's answers scoring 1. Upper left is better. Selected points (cost, score): GLM-5.3-Flash ($0.0098, 0.73), GPT-5.6-Sol ($0.23, 0.76), Claude Opus 5 ($0.78, 0.85), and Fable 5.1 ($1.97, 0.85, using Opus for one refused question). Higher cost does not always buy a higher score. Opens interactive results." /></a> |
 | [open_pref_eval](https://github.com/wassname/open_pref_eval) | Judge-free preference eval via logprobs. Converts Machiavelli, ETHICS, GENIES to fast logprob evals. |
 | [llm_ethics_leaderboard](https://github.com/wassname/llm_ethics_leaderboard) | Moral preference leaderboard; logprob rankings + permutation debiasing. [Results site](https://wassname.github.io/llm_morality/). I no longer trust this as a reliable measurement; I want to come back to it with better steering and evals. |
 
-More datasets on [Hugging Face](https://huggingface.co/wassname).
+Other releases: [tiny-stoic](https://huggingface.co/datasets/wassname/tiny-stoic), Stoic versus commonsense judgements; [DailyDilemmas relabeled](https://huggingface.co/datasets/wassname/daily_dilemmas-relabeled), revised value-involvement labels. Both use model-generated labels. [All datasets](https://huggingface.co/wassname). <!-- PI/OpenAI -->
 
 ## Experiments
 
